@@ -1,0 +1,179 @@
+:root {
+    --pink: #D00BD4;
+    --lightpink: #CA84DB;
+    --black: #242323;
+    --white: #FFF2FF;
+    --favourite: #D00BD4;
+    --cinza: #6D6868;
+}
+
+b {
+    color: var(--favourite);
+}
+
+/* Parte 1 - Banner */
+#banner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#text {
+    flex: 3 3 5%;
+    padding: 80px;
+    font-size: 70px;
+    color: var(--white);
+}
+
+#image {
+    flex: 1 1 50%;
+    text-align: center;
+}
+
+#image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Parte 2 - Segunda Seção */
+#second-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--cinza);
+}
+
+#second-section div {
+    width: 100%;
+    padding: 20px;
+}
+
+#text-right {
+    text-align: center;
+}
+
+#suaCarona {
+    font-size: 50px;
+    color: var(--white);
+}
+
+#junte-se {
+    font-size: 20px;
+    color: var(--white);
+}
+
+#text-right button {
+    padding: 15px 50px;
+    background-color: var(--favourite);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#text-right button:hover {
+    background-color: var(--lightpink);
+}
+
+/* Parte 3 - Terceira Seção */
+#third-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--white);
+}
+
+#third-section div {
+    padding: 20px;
+}
+
+#text-left p {
+    font-size: 30px;
+    color: var(--cinza);
+}
+
+#logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+#logo p {
+    font-size: 30px;
+    color: var(--cinza);
+    margin-top: 10px;
+}
+
+/*parte 04*/
+#fourth-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--lightpink);
+}
+
+#fourth-section div {
+    padding: 20px;
+}
+
+#image-right {
+    flex: 1;
+    text-align: center;
+}
+
+#image-right img {
+    max-width: 100%;
+    height: auto;
+}
+
+#text-left1 {
+    flex: 1;
+}
+
+#text-left1 p {
+    font-size: 50px;
+    color: var(--white);
+}
+
+/* Media Query */
+@media only screen and (min-width: 768px) {
+    #second-section {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #second-section div {
+        width: 48%;
+    }
+
+   
+    
+}
+
+@media only screen and (max-width: 768px) {
+    #third-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #text-left p,
+    #logo p {
+        font-size: 28px;
+    }
+    #apontando{
+        display: none;
+    }
+
+}
