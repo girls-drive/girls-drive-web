@@ -5,6 +5,8 @@
     --white: #FFF2FF;
     --favourite: #D00BD4;
     --footer: #1D1D1D;
+    --gray: #666;
+    --light-gray: #AEAEAE
 }
 
 * {
@@ -88,9 +90,37 @@ header {
     text-decoration: none;
 }
 
-#cadastro-btn:hover {
+.cadastro-btn:hover {
     background-color: var(--lightpink);
 }
+
+.btn-primary {
+    background-color: var(--pink);
+    outline-color: var(--pink);
+    border-color: var(--pink);
+}
+
+.btn-primary:hover {
+    background-color: var(--lightpink);
+    outline-color: var(--lightpink);
+    border-color: var(--lightpink);
+}
+
+.form-control {
+    background-color: var(--gray);
+    border-color: var(--gray);
+    color: var(--white);
+}
+
+.form-control:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 .25rem rgba(209, 11, 210, .25);
+}
+
+.form-control::placeholder {
+    color: var(--light-gray);
+}
+
 /*footer*/
 footer {
     background-color: var(--footer);
