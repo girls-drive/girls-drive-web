@@ -10,8 +10,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-gwfh9yf7aQ42C4Va+1tS5pcKdJGfO4pI7TbCN1RvObCv6BqJ2Ms2hCPOR9dYI5cr" crossorigin="anonymous">
     <link rel="stylesheet" href="css/inicial.css">
-    <link rel="stylesheet" href="css/common.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="common.css">
+    <title>Girls Drive</title>
 </head>
 <body>
     
@@ -29,7 +29,14 @@
                 <a href="#">PT-BR</a>
                 <a href="#">Ajuda</a>
                 <a href="#">Fazer Login</a>
-                <a href="cadastro-passageira.html" class="cadastro-btn">Cadastre-se</a>
+                <button id="cadastro-btn">Cadastre-se</button>
+    <div id="cadastro-options" style="display: none;">
+
+        <ul>
+            <li><a href="#" id="cadastro-passageiro">Cadastrar como Passageiro</a></li>
+            <li><a href="#" id="cadastro-motorista">Cadastrar como Motorista</a></li>
+        </ul>
+    </div>
             </div>
         </div>
     </header>
@@ -46,7 +53,7 @@
 
     <div id="second-section">
         <div id="image-left">
-            <img src="img/240_F_651097828_1wmoTQdvp6X1u9xpN0B7rQTtLUCesVss 1.png" alt="Imagem" />
+            <img src="img/240_F_651097828_1wmoTQdvp6X1u9xpN0B7rQTtLUCesVss 1.png" alt="Imagem" id="girlsimg"/>
         </div>
         <div id="text-right">
             <p id="suaCarona">Sua carona <b>confiável</b> e <b>confortável</b>, com uma abordagem feminina.</p>
@@ -105,5 +112,7 @@
             </div>
         </div>
     </footer>
+    
+    <script src="js/homeP.js"></script>
 </body>
 </html>
