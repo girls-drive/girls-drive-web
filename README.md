@@ -4,9 +4,9 @@
 [Prótotipo Figma](https://encurtador.com.br/dhyNT)
 
 ## Integrantes
-- Ana Clara Vaz de Paula
-- Kailany de Oliveira Silva
-- Rodrigo Fernandes Ribeiro
-- Rodrigo Maia Ribeiro
-- Sofia Rodrigues Alves Hosken
-- Paloma Jasmine da Silva Nepomuceno
+- Ana Clara Vaz de Paula - 
+- Kailany de Oliveira Silva - 
+- Rodrigo Fernandes Ribeiro - 
+- Rodrigo Maia Ribeiro - 
+- Sofia Rodrigues Alves Hosken - 
+- Paloma Jasmine da Silva Nepomuceno - 
