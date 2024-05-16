@@ -1,0 +1,42 @@
+{
+    "usuarios": [
+        {
+            "id": "1",
+            "login": "admin",
+            "senha": "123",
+            "nome": "Administrador do Sistema",
+            "email": "admin@abc.com",
+            "tipo": "motorista"
+        },
+        {
+            "id": "2",
+            "login": "user",
+            "senha": "123",
+            "nome": "Usuario Comum",
+            "email": "user@abc.com",
+            "tipo": "passageiro"
+        }
+    ],
+    "corridas": [
+        {
+            "id": "1",
+            "origem": "Local de Origem",
+            "destino": "Local de Destino",
+            "data": "2024-05-16",
+            "hora": "08:00",
+            "status": "agendada",
+            "passageiro_id": "2",
+            "motorista_id": "1"
+        },
+        {
+            "id": "2",
+            "origem": "Outro Local de Origem",
+            "destino": "Outro Local de Destino",
+            "data": "2024-05-17",
+            "hora": "09:00",
+            "status": "concluída",
+            "passageiro_id": "1",
+            "motorista_id": "2"
+        }
+    ]
+}

@@ -21,34 +21,34 @@
         </div>
     </header>
 
-    
     <div class="right">
         <div class="form-container">
-            <form>
+            <form id="rideForm">
                 <div class="input-group">
                     <i class="far fa-circle"></i>
-                    <input type="text" id="circleFrom" name="circleFrom" placeholder="Saindo de">
+                    <input type="text" id="circleFrom" name="circleFrom" placeholder="Saindo de" required>
                 </div>
                 
                 <div class="input-group">
                     <i class="far fa-circle"></i>
-                    <input type="text" id="circleTo" name="circleTo" placeholder="Indo para">
+                    <input type="text" id="circleTo" name="circleTo" placeholder="Indo para" required>
                 </div>
                 
                 <div class="input-group">
                     <i class="far fa-calendar-alt"></i>
-                    <input type="date" id="date" name="date">
+                    <input type="date" id="date" name="date" required>
                 </div>
                 
                 <div class="input-group">
                     <i class="far fa-clock"></i>
-                    <input type="time" id="time" name="time">
+                    <input type="time" id="time" name="time" required>
                 </div>
                 
                 <button type="submit">Pedir Corrida</button>
             </form>
         </div>
     </div>
+
     <footer>
         <div id="footer-content">
             <div id="logo">
@@ -71,6 +71,7 @@
             </div>
         </div>
     </footer>
+
     <script src="../sprits/HomePassageira.js"></script>
 </body>
 </html>
