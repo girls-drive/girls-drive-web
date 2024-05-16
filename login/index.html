@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <title>Login Girls drive</title>
+</head>
+<body>
+    <header>
+        <div id="header-div" class="ntext-select">
+            <div id="left-content">
+                <a id="header-title" href="../index.html"><b id="girls">GIRLS  </b>drive</a>
+                <ul id="link-list">
+                    
+                </ul>
+            </div>
+            <div id="right-content">
+                <a href="#">PT-BR</a>
+                <a href="#">Ajuda</a>
+                <button id="cadastro-btn">Cadastre-se</button>
+                <div id="cadastro-options" style="display: none;">
+                    <ul>
+                        <li><a href="../cadastro-passageira/index.html" id="cadastro-passageiro">Cadastrar como Passageiro</a></li>
+                        <li><a href="#" id="cadastro-motorista">Cadastrar como Motorista</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="login-container">
+     
+        <form>
+            <label for="email">Qual é o seu e-mail?</label>
+            <input type="email" id="email" name="email" required>
+            <label for="senha">Digite sua senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <a href="#" class="forgot-password">Esqueci minha senha</a>
+            <div>
+                <label for="tipoUsuario">Logar como:</label>
+                <input type="radio" id="motorista" name="tipoUsuario" value="motorista">
+                <label for="motorista">Motorista</label>
+                <input type="radio" id="passageiro" name="tipoUsuario" value="passageiro">
+                <label for="passageiro">Passageiro</label>
+                
+            </div>
+            <br>
+
+            
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+    </div>
+
+    <script src="../sprits/login.js"></script>
+    <script src="../js/homeP.js"></script>
+</body>
+</html>
