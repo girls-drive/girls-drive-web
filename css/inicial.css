@@ -36,7 +36,31 @@ b {
     max-width: 100%;
     height: auto;
 }
+/*lista*/
+/* Estilo para a lista de opções de cadastro */
+#cadastro-options {
+    display: none;
+    position: absolute;
+    background-color: var(--black);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 1;
+}
 
+#cadastro-options ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cadastro-options li {
+    margin-bottom: 10px;
+}
+
+
+#cadastro-options a:hover {
+    color: var(--pink);
+}
 /* Parte 2 - Segunda Seção */
 #second-section {
     display: flex;
@@ -162,7 +186,8 @@ b {
     
 }
 
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 568px) {
     #third-section {
         flex-direction: column;
         text-align: center;
@@ -175,5 +200,9 @@ b {
     #apontando{
         display: none;
     }
+    #girlsimg{
+        display: none;
+    }
+
 
 }
