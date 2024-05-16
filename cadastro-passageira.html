@@ -33,32 +33,32 @@
         </div>
     </header>
 
-   <form class="container">
+   <form class="container" onsubmit="cadastrar(event)">
 
     <div class="mb-3">
         <label for="cpf" class="form-label" >CPF:</label>
         <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00">
     </div>
     <div class="mb-3">
-        <label for="email" class="form-label" >Nome completo:</label> <br>
+        <label for="nome" class="form-label" >Nome completo:</label> <br>
         <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome completo aqui">
     </div>
     <div class="mb-3">
-        <label for="anirvesario" class="form-label">Digite sua data de nascimento:</label> <br>
+        <label for="anirvesario" class="form-label">Data de nascimento:</label> <br>
         <input type="date" class="form-control" name="aniversario" id="aniversario">
     </div>
     <div class="mb-3">
-        <label for="sexo" class="form-label">Genero</label> <br>
-        <select name="sexo" class="form-control" id="sexo">
+        <label for="genero" class="form-label">Genero</label> <br>
+        <select name="Genero" class="form-control" id="genero">
             <option value="" selected >Selecione:</option>
-            <option value="">Feminino</option>
-            <option value="">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="M">Masculino</option>
 
         </select>
     </div>
     <div class="mb-3">
-        <label for="endereço" class="form-label">Endereço</label>  <br>
-        <input type="text" class="form-control" name="endereço" id="endereço" placeholder="Digite seu endereço completo.">
+        <label for="endereco" class="form-label">Endereço</label>  <br>
+        <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Digite seu endereço completo.">
     </div>
     <div class="mb-3">
         <label for="tel" class="form-label">Telefone:</label> <br>
@@ -73,8 +73,8 @@
         <input type="password" class="form-control" name="senha" id="senha" placeholder="********">
     </div>
     <div class="mb-3">
-        <label for="senha" class="form-label" >Repita a senha:</label> <br>
-        <input type="password" class="form-control" name="senha" id="senha" placeholder="********">
+        <label for="repitaSenha" class="form-label" >Repita a senha:</label> <br>
+        <input type="password" class="form-control" name="repitaSenha" id="repitaSenha" placeholder="********">
     </div>
     <div class="mb-3" >
         <label for="anexo" class="form-label">Anexe seu documento de identidade:</label>
@@ -112,5 +112,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
     crossorigin="anonymous">
     </script>
+    <script src="scripts/localStorage.js"></script>
+    <script src="scripts/cadastroPassageira.js"></script>
 </body>
 </html>
