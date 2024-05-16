@@ -1,0 +1,86 @@
+:root {
+    --pink: #D00BD4;
+    --lightpink: #CA84DB;
+    --black: #242323;
+    --white: #FFF2FF;
+    --favourite: #D00BD4;
+    --cinza: #6D6868;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.left {
+    background-color: var(--lightpink);
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+.right {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.form-container {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.form-container .input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-container .input-group input[type="text"],
+.form-container .input-group input[type="date"],
+.form-container .input-group input[type="time"] {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.form-container .input-group .fa-circle,
+.form-container .input-group .fa-calendar-alt,
+.form-container .input-group .fa-clock {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cinza);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--favourite);
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: var(--lightpink);
+}
+
+footer {
+    margin-top: auto;
+}
