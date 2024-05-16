@@ -8,7 +8,7 @@ document.getElementById("cadastro-btn").addEventListener("click", function() {
 });
 
 document.getElementById("cadastro-passageiro").addEventListener("click", function() {
-    alert("Você selecionou cadastrar como passageiro!");
+    
 
 });
 
