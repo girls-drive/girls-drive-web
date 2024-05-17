@@ -1,10 +1,19 @@
+:root {
+    --pink: #D00BD4;
+    --lightpink: #CA84DB;
+    --black: #242323;
+    --white: #FFF2FF;
+    --favourite: #D00BD4;
+    --footer: #1D1D1D;
+}
+
 #foto {
     width: 30px;
 }
 
 hr {
     border: none;
-    border-top: 3px solid #000000;
+    border-top: 3px solid var(--black);
     margin: 20px;
 }
 
@@ -71,8 +80,8 @@ p {
 }
 
 .accept-button {
-    background-color: #D00BD4;
-    color: white;
+    background-color: var(--favourite);
+    color: var(--white);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -87,7 +96,7 @@ p {
 
 .bold-black {
     font-weight: bold;
-    color: black;
+    color: var(--black);
 }
 
 .fotopessoa {
