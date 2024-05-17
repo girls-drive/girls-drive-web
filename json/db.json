@@ -1,22 +1,38 @@
 {
     "usuarios": [
-        {
+        {   
+            
             "id": "1",
+            "cpf":"000.000.000-00",
+            "datadeNascimento":"00/00/0000",
+            "genero":"Femino",
+            "Endereco":"rua dos anjos 700",
             "login": "admin",
             "senha": "123",
             "nome": "Administrador do Sistema",
             "email": "admin@abc.com",
-            "tipo": "motorista"
+            "identidade": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+            "tipo": "passageiro"
         },
         {
             "id": "2",
-            "login": "user",
-            "senha": "123",
-            "nome": "Usuario Comum",
-            "email": "user@abc.com",
-            "tipo": "passageiro"
+            "login": "motorista",
+            "cpf":"000.000.000-00",
+            "telefone":"(00) 00000-0000",
+            "NomeCompleto": "Maria da silvia",
+            "datadeNascimento": "00/00/0000",
+            "genero":"Femino",
+            "Endereco":"rua dos anjos 700",
+            "email":"exemplo@gmail.com",
+            "cordocarro":"rosa",
+            "placadocarro":"AAA1A11",
+            "cnh": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+            "senha":"123",
+            "tipo": "motorista"
         }
     ],
+    
+    
     "corridas": [
         {
             "id": "1",
@@ -38,5 +54,7 @@
             "passageiro_id": "1",
             "motorista_id": "2"
         }
+
+
     ]
 }
