@@ -31,7 +31,7 @@ function processLogin() {
             if (tipoUsuario === 'passageiro') {
                 window.location.href = '../homePassageira/index.html';
             } else {
-                window.location.href = '../home-motorista.html';
+                window.location.href = '../homeMotorista/index.html';
             }
         } else {
             alert('O tipo de usuário selecionado não corresponde ao cadastrado.');

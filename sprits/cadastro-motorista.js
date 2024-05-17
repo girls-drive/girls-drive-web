@@ -66,6 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const placa = document.getElementById('placa').value;
         const cor = document.getElementById('cor').value;
 
+        // Se o gênero não estiver selecionado ou for masculino, exibe mensagem e interrompe o cadastro
+        if (!sexo || sexo === 'masculino') {
+            alert('Somente o gênero feminino pode se cadastrar.');
+            return;
+        }
+
         // Converter o arquivo de identidade em base64
         const identidade = document.getElementById('anexo').files[0];
         const identidadeBase64 = identidade ? await fileToBase64(identidade) : '';
@@ -99,13 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Cadastro realizado com sucesso!');
         form.reset();
     });
-    
-    // Verifica se o gênero é feminino
-    const sexo = document.getElementById('sexo').value;
-    if (sexo !== 'feminino') {
-        alert('Somente o gênero feminino pode se cadastrar.');
-        return;
-    }
 
     function fileToBase64(file) {
         return new Promise((resolve, reject) => {
