@@ -55,12 +55,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Verifica se o gênero é feminino
+        const sexo = document.getElementById('sexo').value;
+        if (sexo !== 'feminino') {
+            alert('Somente o gênero feminino pode se cadastrar.');
+            return;
+        }
+
         // Obter os valores dos campos
         const cpf = document.getElementById('cpf').value;
         const telefone = document.getElementById('telefone').value;
         const nome = document.getElementById('nome').value;
         const aniversario = document.getElementById('aniversario').value;
-        const sexo = document.getElementById('sexo').value;
         const endereco = document.getElementById('endereco').value;
         const email = document.getElementById('email').value;
 

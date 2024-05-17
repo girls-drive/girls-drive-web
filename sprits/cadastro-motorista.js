@@ -99,6 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Cadastro realizado com sucesso!');
         form.reset();
     });
+    
+    // Verifica se o gênero é feminino
+    const sexo = document.getElementById('sexo').value;
+    if (sexo !== 'feminino') {
+        alert('Somente o gênero feminino pode se cadastrar.');
+        return;
+    }
 
     function fileToBase64(file) {
         return new Promise((resolve, reject) => {
