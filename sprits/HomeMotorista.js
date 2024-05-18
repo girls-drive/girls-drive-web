@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="${passageiro.fotoPerfil}" alt="Foto de Perfil">
                         <div class="details">
                         
-                            <p>${passageiro.nome || passageiro.NomeCompleto}</p>
+                          <p class="nickname">${passageiro.nome || passageiro.NomeCompleto}</p>
                         </div>
                     </div>
                     <div class="details">

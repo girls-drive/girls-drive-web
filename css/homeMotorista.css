@@ -49,7 +49,11 @@ strong{
     flex-direction: column;
     align-items: center;
 }
-
+.nickname{
+    color: var(--favourite);
+    font-size: 30px;
+    font-weight: bold;
+}
 .ride .profile {
     display: flex;
     align-items: center;
