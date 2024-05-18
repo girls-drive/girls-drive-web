@@ -11,6 +11,7 @@
             "senha": "123",
             "nome": "Administrador do Sistema",
             "email": "admin@abc.com",
+            "fotoPerfil":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
             "identidade": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
             "tipo": "passageiro"
         },
@@ -26,6 +27,7 @@
             "email":"exemplo@gmail.com",
             "cordocarro":"rosa",
             "placadocarro":"AAA1A11",
+            "fotoPerfil":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
             "cnh": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
             "senha":"123",
             "tipo": "motorista"
