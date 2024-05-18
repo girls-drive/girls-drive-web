@@ -1,3 +1,5 @@
+/* styles.css */
+
 :root {
     --pink: #D00BD4;
     --lightpink: #CA84DB;
@@ -7,50 +9,37 @@
     --footer: #1D1D1D;
 }
 
-#foto {
-    width: 30px;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Garante que o contêiner ocupa toda a altura da viewport */
 }
 
-hr {
-    border: none;
-    border-top: 3px solid var(--black);
-    margin: 20px;
-}
-
-#drivew {
-    color: var(--white);
-    font-weight: bolder;
-    margin-right: 20px;
-    text-decoration: none;
-}
-
-#dadoscor {
-    width: 200px;
-}
-
-.card {
+#corrida-details {
     width: 400px;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin: -30px;
+    margin: 20px;
     display: flex;
-    margin-left: -50px;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
 .details {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     width: 100%;
+    padding: 20px;
 }
 
-
 .profile-picture {
-    width: 50px;
-    height: 50px;
+    width: 90px;
+    height: 90px;
     background-size: cover;
     background-position: center;
     border-radius: 50%;
@@ -61,22 +50,25 @@ hr {
 .name-address {
     margin-left: 10px;
     text-align: left;
-    margin-top: -5px
+    margin-top: -5px;
 }
 
 h2 {
     margin: 0;
     font-size: 25px;
     margin-bottom: 3px;
+    color: var(--black);
 }
 
 p {
     margin: 0;
     margin-top: 3px;
+    color: var(--black);
 }
 
 .button-wrapper {
     padding: 10px;
+    width: 100%;
 }
 
 .accept-button {
@@ -87,11 +79,18 @@ p {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.accept-button:hover {
+    background-color: var(--lightpink);
 }
 
 .infos {
-    margin-left: 0px;
     text-align: left;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .bold-black {
@@ -99,13 +98,11 @@ p {
     color: var(--black);
 }
 
-.fotopessoa {
-    width:90px;
+hr {
+    border: none;
+    border-top: 3px solid var(--black);
+    margin: 20px 0;
 }
+.centralizar{
 
-.circle {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    overflow: hidden;
 }

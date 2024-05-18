@@ -6,6 +6,15 @@
     --favourite: #D00BD4;
     --cinza: #6D6868;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Defina a altura mínima do corpo como 100% da altura da janela de visualização */
+}
+
+footer {
+    margin-top: auto; /* Faz com que o footer fique no final da página */
+}
 
 .right {
     padding: 1rem;

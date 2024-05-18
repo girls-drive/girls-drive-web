@@ -73,7 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
     ridesContainer.addEventListener('click', function(event) {
         if (event.target.classList.contains('select-button')) {
             const corridaId = event.target.getAttribute('data-id');
-            alert(`Corrida ${corridaId} selecionada!`);
+            // Redirecionar para a página de aceitação de corrida com o ID da corrida na URL
+            window.location.href = `../aceitar-corrida/index.html?id=${corridaId}`;
+
         }
     });
 });
