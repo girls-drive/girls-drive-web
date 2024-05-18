@@ -1,5 +1,3 @@
-/* styles.css */
-
 :root {
     --pink: #D00BD4;
     --lightpink: #CA84DB;
@@ -8,87 +6,80 @@
     --favourite: #D00BD4;
     --footer: #1D1D1D;
 }
-#aceitar{
-    
+
+#aceitar {
     background-color: var(--black);
-    
     width: 700px; 
-    margin-left: auto;
-    margin-right: auto; 
-   
+    margin: 0 auto;
+    padding: 20px;
 }
+
+#accept-corrida {
+    background-color: var(--favourite);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;  /* Garante que o contêiner ocupa toda a altura da viewport */
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+strong{
+    color: var(--cinza);
+    font-size: 25px;
 }
 
 #corrida-details {
-    width: 400px;
+    width: 100%;
     background-color: var(--white);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  
-}
-
-.details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    margin: 20px auto;
     padding: 20px;
 }
 
 .profile-picture {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    margin: 10px;
-    align-self: flex-start;
+    margin-right: 20px;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
 }
 
 .name-address {
-    margin-left: 10px;
     text-align: left;
-    margin-top: -5px;
 }
 
 h2 {
-    margin: 0;
+    margin: 10px 0;
     font-size: 25px;
-    margin-bottom: 3px;
     color: var(--black);
 }
 
 p {
-    margin: 0;
-    margin-top: 3px;
+    margin: 5px 0;
     color: var(--black);
 }
 
 .button-wrapper {
     padding: 10px;
     width: 100%;
-}
-
-.accept-button {
-    background-color: var(--favourite);
-    color: var(--white);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
 }
 
 .accept-button:hover {
@@ -110,4 +101,19 @@ hr {
     border: none;
     border-top: 3px solid var(--black);
     margin: 20px 0;
+}
+#accept-corrida {
+    width: 100%; /* Adicionado para ocupar toda a largura */
+    background-color: var(--favourite);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.nomeP{
+    color: var(--favourite);
+    font-size: 30px;
+    font-weight: bold;
 }

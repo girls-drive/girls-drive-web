@@ -177,25 +177,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         console.log('Exibindo detalhes da corrida e do passageiro:', corrida, passageiro);
         corridaDetailsContainer.innerHTML = `
-            <h2>Detalhes da Corrida</h2>
+            
             <div class="user-details">
                 <img src="${passageiro.fotoPerfil}" alt="Foto do Usuário" class="profile-picture">
-                <div class="name-address">
-                    <p><strong>Nome do Passageiro:</strong> ${passageiro.nome}</p>
+                <p class="nomeP"> ${passageiro.nome}</p>
+                
                 </div>
             </div>
-            <hr>
+        
             <div class="corrida-info">
-                <p><strong>Origem:</strong> ${corrida.origem}</p>
-                <p><strong>Destino:</strong> ${corrida.destino}</p>
-                <p><strong>Data:</strong> ${corrida.data}</p>
-                <p><strong>Horário:</strong> ${corrida.hora}</p>
+                <p><strong>Origem</strong></p>
+                <p> ${corrida.origem}</p>
+                <p><strong>Destino</strong> </p>
+                <p>${corrida.destino}</p>
+                <p><strong>Data</strong> </p>
+                <p>${corrida.data}</p>
+                <p><strong>Horário</strong></p>
+                <p> ${corrida.hora}</p>
             </div>
-            <hr>
+           
             <div class="contato-info">
                 <p><strong>Contato:</strong></p>
-                <p><strong>Telefone:</strong> ${passageiro.telefone || 'Telefone não disponível'}</p>
-                <p><strong>Email:</strong> ${passageiro.email || 'Email não disponível'}</p>
+                <p><strong>Telefone</strong> </p>
+                <p>${passageiro.telefone || 'Telefone não disponível'}</p>
+                <p><strong>Email</strong> </p>
+                <p>${passageiro.email || 'Email não disponível'}</p>
             </div>
             <button id="accept-corrida">Aceitar Corrida</button>
         `;
