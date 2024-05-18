@@ -18,6 +18,9 @@ body {
     font-family: "Onest", sans-serif;
     font-optical-sizing: auto;
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -90,27 +93,36 @@ header {
     text-decoration: none;
 }
 
-
 #cadastro-btn:hover {
     background-color: var(--lightpink);
 }
-/*footer*/
+
+/* Main content */
+.right {
+    padding: 1rem;
+    flex: 1; /* This ensures the main content takes up the available space */
+}
+
 footer {
     background-color: var(--footer);
     padding: 20px;
-    text-align: center; /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 #footer-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center;
 }
 
-#logo{
+#logo {
     display: flex;
-    
 }
+
 #logo img {
     max-width: 100px;
     height: auto;
@@ -130,16 +142,16 @@ footer {
 #social-media a {
     margin-right: 10px;
     font-size: 30px;
-    color: var(--white); /* Cor dos ícones */
+    color: var(--white);
     text-decoration: none;
 }
 
 #social-media a:last-child {
-    margin-right: 0; /* Remove a margem do último ícone para evitar espaço extra */
+    margin-right: 0;
 }
 
 #contact {
-    color:var(--white);
+    color: var(--white);
     margin-top: 20px;
     text-align: center;
 }
@@ -149,6 +161,7 @@ footer {
     font-size: 20px;
     margin-bottom: 10px;
 }
+
 #cadastro-options {
     display: none;
     position: absolute;
@@ -168,13 +181,11 @@ footer {
     margin-bottom: 10px;
 }
 
-
 #cadastro-options a:hover {
     color: var(--pink);
 }
 
-
-@media only screen and (max-width: 768px ) {
+@media only screen and (max-width: 768px) {
     #header-div {
         flex-direction: column;
         align-items: center;
@@ -204,6 +215,7 @@ footer {
         padding: 8px 15px;
     }
 }
+
 @media only screen and (max-width: 375px) {
     #header-title {
         font-size: 2em;
