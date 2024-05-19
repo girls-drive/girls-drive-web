@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/homePassageira.css">
+    <link rel="stylesheet" href="../css/corrida-aceita.css">
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Home Passageira</title>
@@ -16,41 +16,13 @@
                 <ul id="link-list"></ul>
             </div>
             <div id="right-content">
-                <button class="btn btn-primary"  id="btnSair">Sair</button>
+                <button class="btn btn-primary">Sair</button>
             </div>
         </div>
     </header>
+    <div id="corrida-details"></div>
+    <div id="status-message" class="status-message"></div>
 
-    <div class="right">
-        <div class="form-container">
-            <form id="rideForm">
-                <div class="input-group">
-                    <i class="far fa-circle"></i>
-                    <input type="text" id="circleFrom" name="circleFrom" placeholder="Saindo de" required>
-                </div>
-                
-                <div class="input-group">
-                    <i class="far fa-circle"></i>
-                    <input type="text" id="circleTo" name="circleTo" placeholder="Indo para" required>
-                </div>
-                
-                <div class="input-group">
-                    <i class="far fa-calendar-alt"></i>
-                    <input type="date" id="date" name="date" required>
-                </div>
-                
-                <div class="input-group">
-                    <i class="far fa-clock"></i>
-                    <input type="time" id="time" name="time" required>
-                </div>
-                <a id="link-corridas" href="../corridascadastradas-provi/index.html">Link para Corridas</a>
-
-                <button type="submit">Pedir Corrida</button>
-            </form>
-        </div>
-    </div>
-<br>
-<br>
     <footer>
         <div id="footer-content">
             <div id="logo">
@@ -73,7 +45,6 @@
             </div>
         </div>
     </footer>
-    
-    <script src="../sprits/HomePassageira.js"></script>
+    <script src="../sprits/corrida-aceita.js"></script>
 </body>
 </html>

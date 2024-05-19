@@ -67,3 +67,13 @@ document.getElementById('rideForm').addEventListener('submit', cadastrarCorrida)
 
 // Log as corridas no console ao carregar a página
 document.addEventListener('DOMContentLoaded', logCorridasNoConsole);
+
+
+
+    document.getElementById('btnSair').addEventListener('click', function() {
+        // Limpar o localStorage ou executar qualquer outra ação de logout aqui
+        localStorage.clear(); // Isso limpará todos os dados salvos no localStorage
+        // Após o logout, redirecione o usuário para a página de login ou para a página inicial
+        window.location.href = '../index.html'; // Substitua 'login.html' pelo caminho correto da sua página de login
+    });
+

@@ -71,33 +71,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Telefone:</strong> ${passageiro.telefone || 'Telefone não disponível'}</p>
                 <p><strong>Email:</strong> ${passageiro.email || 'Email não disponível'}</p>
             </div>
-            <button id="accept-corrida">Aceitar Corrida</button>
         `;
     }
 
     displayCorridaDetails(corrida, passageiro);
 
-    function saveCorridas(corridas) {
-        localStorage.setItem('corridas', JSON.stringify(corridas));
-    }
-
-    document.getElementById('corrida-details').addEventListener('click', function(event) {
-        if (event.target && event.target.id === 'accept-corrida') {
-            aceitarCorrida(corridaId);
-        }
-    });
-
-    function aceitarCorrida(id) {
+    function checkCorridaStatus() {
         const corridas = loadCorridas();
-        const corridaIndex = corridas.findIndex(c => c.id === id);
-        if (corridaIndex === -1) {
-            console.error('Corrida não encontrada para aceitar');
-            return;
+        const updatedCorrida = corridas.find(c => c.id === corridaId);
+        if (updatedCorrida && updatedCorrida.status === 'aceita') {
+            document.getElementById('status-message').innerText = 'Sua corrida foi aceita pelo motorista!';
         }
-        corridas[corridaIndex].status = 'aceita';
-        corridas[corridaIndex].motorista_id = "2"; // ID do motorista (ajuste conforme necessário)
-        saveCorridas(corridas);
-        alert('Corrida aceita com sucesso!');
-        window.location.href = '../homeMotorista/index.html'; // Redireciona para a página inicial
     }
+
+    setInterval(checkCorridaStatus, 3000); // Verifica o status da corrida a cada 3 segundos
 });
