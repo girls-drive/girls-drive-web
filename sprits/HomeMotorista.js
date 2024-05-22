@@ -137,4 +137,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Adiciona um evento de submit ao formulário
     document.getElementById('rideForm').addEventListener('submit', cadastrarCorrida);
+
+    document.getElementById('btnSair').addEventListener('click', function() {
+        
+        localStorage.removeItem('usuarioAtual'); // ou qualquer chave específica do usuário
+      
+        window.location.href = '../index.html'; // 
+    });
+
+
 });

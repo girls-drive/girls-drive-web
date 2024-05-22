@@ -71,9 +71,9 @@ document.addEventListener('DOMContentLoaded', logCorridasNoConsole);
 
 
     document.getElementById('btnSair').addEventListener('click', function() {
-        // Limpar o localStorage ou executar qualquer outra ação de logout aqui
-        localStorage.clear(); // Isso limpará todos os dados salvos no localStorage
-        // Após o logout, redirecione o usuário para a página de login ou para a página inicial
-        window.location.href = '../index.html'; // Substitua 'login.html' pelo caminho correto da sua página de login
+        
+        localStorage.removeItem('usuarioAtual'); // ou qualquer chave específica do usuário
+      
+        window.location.href = '../index.html'; // 
     });
 
