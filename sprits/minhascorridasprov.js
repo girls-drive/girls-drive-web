@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const passageiroId = "1"; // ID do passageiro (substitua pelo ID do passageiro logado)
+    // Obtém o ID do passageiro logado (substitua pelo método adequado para obter o ID do passageiro logado)
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const passageiroId = loggedInUser ? loggedInUser.id : null;
 
     function loadCorridas() {
         const corridas = localStorage.getItem('corridas');
@@ -10,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const corridasList = document.getElementById('corridas-list');
         corridasList.innerHTML = ''; // Limpa a lista antes de exibir
 
+        // Filtra as corridas com base no ID do passageiro
         const corridasDoPassageiro = corridas.filter(corrida => corrida.passageiro_id === passageiroId);
 
         if (corridasDoPassageiro.length === 0) {

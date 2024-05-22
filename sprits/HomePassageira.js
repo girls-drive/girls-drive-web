@@ -31,6 +31,16 @@ function cadastrarCorrida(event) {
         return;
     }
 
+    // Verifica se o usuário está logado
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+        alert('Usuário não está logado.');
+        return;
+    }
+
+    // Obtém o ID do passageiro logado
+    const passageiro_id = loggedInUser.id;
+
     // Carrega as corridas existentes
     const corridas = loadCorridas();
 
@@ -45,7 +55,7 @@ function cadastrarCorrida(event) {
         data: data,
         hora: hora,
         status: "agendada", // Status inicial da corrida
-        passageiro_id: "1", // ID do passageiro (substitua pelo ID do passageiro logado)
+        passageiro_id: passageiro_id, // ID do passageiro logado
         motorista_id: "2" // ID do motorista (substitua pelo ID do motorista atribuído à corrida)
     };
 
@@ -68,12 +78,8 @@ document.getElementById('rideForm').addEventListener('submit', cadastrarCorrida)
 // Log as corridas no console ao carregar a página
 document.addEventListener('DOMContentLoaded', logCorridasNoConsole);
 
-
-
-    document.getElementById('btnSair').addEventListener('click', function() {
-        
-        localStorage.removeItem('usuarioAtual'); // ou qualquer chave específica do usuário
-      
-        window.location.href = '../index.html'; // 
-    });
-
+// Função para sair
+document.getElementById('btnSair').addEventListener('click', function() {
+    localStorage.removeItem('loggedInUser'); // Remove o usuário logado
+    window.location.href = '../index.html'; // Redireciona para a página inicial
+});
