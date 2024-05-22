@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
-                // Simulação de upload e retorno de URL (substitua com lógica real de upload)
                 const simulatedURL = `https://example.com/uploads/${file.name}`;
                 resolve(simulatedURL);
             };

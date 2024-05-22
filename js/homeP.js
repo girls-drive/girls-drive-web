@@ -16,3 +16,4 @@ document.getElementById("cadastro-motorista").addEventListener("click", function
     alert("Você selecionou cadastrar como motorista!");
   
 });
+
