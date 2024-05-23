@@ -30,9 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Data:</strong> ${corrida.data}</p>
                 <p><strong>Horário:</strong> ${corrida.hora}</p>
                 <p class="${corrida.status === 'aceita' ? 'status-aceita' : 'status-agendada'}"><strong>Status:</strong> ${corrida.status === 'aceita' ? 'Aceita' : 'Agendada'}</p>
-                <button>Ver corrida</button>
+                <button class="ver-corrida-btn" data-id="${corrida.id}">Ver corrida</button>
                 `;
             corridasList.appendChild(corridaElement);
+        });
+
+        // Adiciona event listener para os botões "Ver corrida"
+        const verCorridaButtons = document.querySelectorAll('.ver-corrida-btn');
+        verCorridaButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const corridaId = this.getAttribute('data-id');
+                window.location.href = `../mensagens/index.html?id=${corridaId}`;
+            });
         });
     }
 

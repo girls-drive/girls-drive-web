@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function loadCorridas() {
         const corridas = localStorage.getItem('corridas');
-        console.log('Corridas carregadas do Local Storage:', corridas);
         return corridas ? JSON.parse(corridas) : [];
     }
 
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Exibindo detalhes da corrida e do passageiro:', corrida, passageiro);
         corridaDetailsContainer.innerHTML = `
             <div class="user-details">
-                <img src="${passageiro.fotoPerfil}" alt="Foto do Usuário" class="profile-picture">
+                <img src="${passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/icons-profile.webp'}" alt="Foto do Usuário" class="profile-picture">
                 <p class="nomeP">${passageiro.nome}</p>
             </div>
             <div class="corrida-info">
@@ -72,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Email:</strong> ${passageiro.email || 'Email não disponível'}</p>
             </div>
             <button id="accept-corrida">Aceitar Corrida</button>
+            <button id="whatsapp-contact">Contatar via WhatsApp</button>
         `;
     }
 
@@ -84,12 +84,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('corrida-details').addEventListener('click', function(event) {
         if (event.target && event.target.id === 'accept-corrida') {
             aceitarCorrida(corridaId);
+        } else if (event.target && event.target.id === 'whatsapp-contact') {
+            contatarWhatsApp(passageiro.telefone);
         }
     });
 
     function aceitarCorrida(id) {
         const corridas = loadCorridas();
         const corridaIndex = corridas.findIndex(c => c.id === id);
+        const passInfo = usuarios[corridas[corridaIndex].passageiro_id];
+        console.log(passInfo["telefone"]) // mostrar o objeto no inspetor de elementos -- tirar dps
         if (corridaIndex === -1) {
             console.error('Corrida não encontrada para aceitar');
             return;
@@ -98,6 +102,35 @@ document.addEventListener('DOMContentLoaded', function() {
         corridas[corridaIndex].motorista_id = "2"; // ID do motorista (ajuste conforme necessário)
         saveCorridas(corridas);
         alert('Corrida aceita com sucesso!');
-        window.location.href = '../homeMotorista/index.html'; // Redireciona para a página inicial
+        let timerInterval;
+        Swal.fire({
+        title: "Procurando corridat!",
+        html: "Iniciando corrinda <b></b> milliseconds.",
+        timer: 5*1000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        }
+        }).then((result) => {
+            contatarWhatsApp(passInfo["telefone"])
+        });
+    }
+
+    function clearNumber(x) {
+        return x.replace(/[()\s-]/g, '');
+    }
+    
+    
+    function contatarWhatsApp(telefone) {
+        if (!telefone) {
+            alert('Telefone não disponível para contato via WhatsApp');
+            return;
+        }
+        const whatsappUrl = `https://wa.me/+55${clearNumber(telefone)}`;
+        window.open(whatsappUrl, '_blank');
     }
 });

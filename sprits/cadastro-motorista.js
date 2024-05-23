@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('cpf').addEventListener('input', function(event) {
+        let cpf = event.target.value.replace(/\D/g, '');
+        if (cpf.length > 11) {
+            cpf = cpf.slice(0, 11);
+        }
+        cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+        cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        event.target.value = cpf;
+    });
+    
+    
     const form = document.getElementById('cadastroForm');
 
     form.addEventListener('submit', async function(event) {
