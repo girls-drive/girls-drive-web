@@ -10,6 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
         event.target.value = cpf;
     });
     
+    // Máscara para telefone
+    document.getElementById('telefone').addEventListener('input', function(event) {
+        let phone = event.target.value.replace(/\D/g, '');
+        if (phone.length > 11) {
+            phone = phone.slice(0, 11);
+        }
+        phone = phone.replace(/(\d{2})(\d)/, '($1) $2');
+        phone = phone.replace(/(\d{5})(\d)/, '$1-$2');
+        event.target.value = phone;
+    });
     
     const form = document.getElementById('cadastroForm');
 
