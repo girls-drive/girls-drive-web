@@ -83,8 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('corrida-details').addEventListener('click', function(event) {
         if (event.target && event.target.id === 'accept-corrida') {
+            console.log('Botão Aceitar Corrida clicado');
             aceitarCorrida(corridaId);
         } else if (event.target && event.target.id === 'whatsapp-contact') {
+            console.log('Botão Contatar via WhatsApp clicado');
             contatarWhatsApp(passageiro.telefone);
         }
     });
@@ -92,39 +94,45 @@ document.addEventListener('DOMContentLoaded', function() {
     function aceitarCorrida(id) {
         const corridas = loadCorridas();
         const corridaIndex = corridas.findIndex(c => c.id === id);
-        const passInfo = usuarios[corridas[corridaIndex].passageiro_id];
-        console.log(passInfo["telefone"]) // mostrar o objeto no inspetor de elementos -- tirar dps
+        
         if (corridaIndex === -1) {
             console.error('Corrida não encontrada para aceitar');
             return;
         }
+
+        const passInfo = usuarios.find(u => u.id === corridas[corridaIndex].passageiro_id);
+        
         corridas[corridaIndex].status = 'aceita';
-        corridas[corridaIndex].motorista_id = "2"; // ID do motorista (ajuste conforme necessário)
+        corridas[corridaIndex].motorista_id = "2"; 
         saveCorridas(corridas);
+
         alert('Corrida aceita com sucesso!');
+
         let timerInterval;
         Swal.fire({
-        title: "Procurando corridat!",
-        html: "Iniciando corrinda <b></b> milliseconds.",
-        timer: 5*1000,
-        timerProgressBar: true,
-        didOpen: () => {
-            Swal.showLoading();
-            const timer = Swal.getPopup().querySelector("b");
-            timerInterval = setInterval(() => {
-            timer.textContent = `${Swal.getTimerLeft()}`;
-            }, 100);
-        }
+            title: "Procurando corrida!",
+            html: "Iniciando corrida em <b></b> milissegundos.",
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
         }).then((result) => {
-            contatarWhatsApp(passInfo["telefone"])
+            contatarWhatsApp(passInfo.telefone);
         });
     }
 
     function clearNumber(x) {
         return x.replace(/[()\s-]/g, '');
     }
-    
-    
+
     function contatarWhatsApp(telefone) {
         if (!telefone) {
             alert('Telefone não disponível para contato via WhatsApp');
