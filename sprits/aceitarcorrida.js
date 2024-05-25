@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Telefone:</strong> ${passageiro.telefone || 'Telefone não disponível'}</p>
                 <p><strong>Email:</strong> ${passageiro.email || 'Email não disponível'}</p>
             </div>
-            <button id="accept-corrida">Aceitar Corrida</button>
-            <button id="whatsapp-contact">Contatar via WhatsApp</button>
+            <button id="accept-corrida">Entrar em contato com passageiro</button>
+            
         `;
     }
 
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let timerInterval;
         Swal.fire({
-            title: "Procurando corrida!",
+            title: "Aguarde um momento!",
             html: "Iniciando corrida em <b></b> milissegundos.",
             timer: 5000,
             timerProgressBar: true,

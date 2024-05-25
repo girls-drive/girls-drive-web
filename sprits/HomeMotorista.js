@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p><strong>Destino</strong></p>
                         <p>${corrida.destino}</p>
                     </div>
-                    <button class="select-button" data-id="${corrida.id}">Selecionar</button>
+                    <button class="select-button" data-id="${corrida.id}">Aceitar corrida</button>
                 `;
 
                 ridesContainer.appendChild(rideElement);
