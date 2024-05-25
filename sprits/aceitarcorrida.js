@@ -56,19 +56,27 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Exibindo detalhes da corrida e do passageiro:', corrida, passageiro);
         corridaDetailsContainer.innerHTML = `
             <div class="user-details">
-                <img src="${passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/icons-profile.webp'}" alt="Foto do Usuário" class="profile-picture">
+                <img src="${passageiro.fotoPerfil ? passageiro.fotoPerfil: '../img/Rectangle 1582.png'}" alt="Foto do Usuário" class="profile-picture">
                 <p class="nomeP">${passageiro.nome}</p>
             </div>
             <div class="corrida-info">
-                <p><strong>Origem:</strong> ${corrida.origem}</p>
-                <p><strong>Destino:</strong> ${corrida.destino}</p>
-                <p><strong>Data:</strong> ${corrida.data}</p>
-                <p><strong>Horário:</strong> ${corrida.hora}</p>
+                <p><strong>Origem</strong> </p>
+                <p>${corrida.origem}</p>
+                <p><strong>Destino</strong></p>
+                <p>${corrida.destino}</p>
+                <p><strong>Data</strong></p>
+                <p> ${corrida.data}</p>
+                <p><strong>Horário</strong> 
+                </p>${corrida.hora}</p>
             </div>
             <div class="contato-info">
-                <p><strong>Contato:</strong></p>
-                <p><strong>Telefone:</strong> ${passageiro.telefone || 'Telefone não disponível'}</p>
-                <p><strong>Email:</strong> ${passageiro.email || 'Email não disponível'}</p>
+              
+                </strong></p>
+                <p><strong>Telefone</strong></p>
+                <p>${passageiro.telefone || 'Telefone não disponível'}</p>
+               <br>
+             
+               
             </div>
             <button id="accept-corrida">Entrar em contato com passageiro</button>
             

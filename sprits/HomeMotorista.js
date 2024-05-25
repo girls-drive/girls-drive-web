@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 rideElement.innerHTML = `
                     <div class="profile">
-                        <img src="${passageiro.fotoPerfil}" alt="Foto de Perfil">
+                        <img src="${passageiro.fotoPerfilfotoPerfil ? passageiro.fotoPerfil: '../img/Rectangle 1582.png'}" alt="Foto de Perfil">
                         <div class="details">
                             <p class="nickname">${passageiro.nome || passageiro.NomeCompleto}</p>
                         </div>
