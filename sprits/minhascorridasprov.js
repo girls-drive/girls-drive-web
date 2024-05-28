@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         verCorridaButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const corridaId = this.getAttribute('data-id');
-                window.location.href = `../mensagens/index.html?id=${corridaId}`;
+                window.location.href = `../detalhe-corrida-Passa/index.html?id=${corridaId}`;
             });
         });
     }
