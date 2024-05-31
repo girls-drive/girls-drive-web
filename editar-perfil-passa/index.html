@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Link do Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/editar-perfil-passageira.css">
+    <link rel="stylesheet" href="../common.css">
+    <!-- Inputmask JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6-beta.29/inputmask.min.js"></script>
+
+    <title>Editar perfil de Passageira</title>
+</head>
+<body>
+    <header>
+        <div id="header-div" class="ntext-select">
+            <div id="left-content">
+                <a id="header-title" href="../index.html"><b id="girls">GIRLS</b> drive</a>
+                <ul id="link-list">
+                    <!-- Links adicionais podem ser adicionados aqui -->
+                </ul>
+            </div>
+            <div id="right-content">
+                <a href="#">PT-BR</a>
+                <a href="#">Ajuda</a>
+                <a href="#" class="btn btn-primary">#</a>
+            </div>
+        </div>
+    </header>
+    <div class="d-flex justify-content-center">
+        <h1 id="atualize">Atualize <br>Seus Dados</h1>
+    </div>
+    <form class="container" id="cadastroForm">
+
+        <div class="mb-3" id="max-width">
+            <div class="imageContainer">
+                <img src="../img/png-transparent-computer-icons-profile-s-free-angle-sphere-profile-cliparts-free.png" alt="Selecione uma imagem" id="imgPhoto">
+
+            </div>
+        </div>
+
+        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"/>
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label">Atualize o seu Nome:</label>
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome completo aqui">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Atualize o seu E-mail:</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@girlsdrive.com">
+        </div>
+        <div class="mb-3">
+            <label for="senha" class="form-label">Atualize a sua Senha:</label>
+            <input type="password" class="form-control" name="senha" id="senha" placeholder="********">
+        </div>
+        <div class="mb-3">
+            <label for="repetir-senha" class="form-label">Repita a senha:</label>
+            <input type="password" class="form-control" name="repetir-senha" id="repetir-senha" placeholder="********">
+        </div>
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Atualize o seu Telefone:</label>
+            <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="(00) 00000-0000">
+        </div>
+        <div class="mb-3" id="Salvar-dados">
+            <input type="submit" class="btn btn-primary" value="Salvar Dados">
+        </div>
+    </form>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="logo">
+                <img src="../img/model 2.png" alt="Logo do site">
+                <p><b>GIRLS</b> drive</p>
+            </div>
+            <div id="social-media">
+                <p>Nossas redes sociais:</p>
+                <span><img src="../img/Social Icons-1.png" alt="Icone de rede social 1"></span>
+                <span><img src="../img/Social Icons-2.png" alt="Icone de rede social 2"></span>
+                <span><img src="../img/Social Icons-3.png" alt="Icone de rede social 3"></span>
+                <span><img src="../img/Social Icons.png" alt="Icone de rede social 4"></span>
+            </div>
+            <div id="contact">
+                <p>Entre em contato conosco por e-mail:</p>
+                <div id="google-icon">
+                    <i class="fab fa-google fa-lg"></i>
+                    <p>drivegirls01@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+    crossorigin="anonymous"></script>
+    <script src="../sprits/editar-perfil-passageira.js"></script>
+</body>
+</html>
