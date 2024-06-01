@@ -1,0 +1,122 @@
+:root {
+    --pink: #D00BD4;
+    --lightpink: #CA84DB;
+    --black: #242323;
+    --white: #FFF2FF;
+    --favourite: #D00BD4;
+    --cinza: #6D6868;
+}
+
+b {
+    color: var(--favourite);
+}
+
+input[type='file']{
+    display: none;
+}
+
+#max-width {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    align-items: center;
+
+}
+
+#atualize {
+    color: #eee;
+    text-align: center;
+    font-size: 70px;
+}
+
+.imageContainer {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+
+#alterar-foto {
+    color: #eee;
+    text-align: center;
+}
+
+
+.btn-primary {
+    background-color: var(--favourite);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: var(--lightpink);
+}
+
+
+.form-label {
+    color: var(--white);
+}
+
+#Salvar-dados {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#junte-se {
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+
+
+#imgPhoto {
+    margin-top: 10%;
+    max-width: 200px;
+    width: 100%;
+    padding: 10%;
+    background-color: #eee;
+    border: 5px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+#imgPhoto:hover{
+    background-color: #6D6868;
+    border: 5px solid #111;
+
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    
+    #cadastre-se {
+        margin-top: 10px;
+    }
+    
+    #junte-se {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    
+    #cadastre-se {
+        margin-top: 5px;
+    }
+    
+    #junte-se {
+        font-size: 14px;
+    }
+}
