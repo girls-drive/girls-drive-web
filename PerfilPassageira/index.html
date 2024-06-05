@@ -9,6 +9,7 @@
     <title>Perfil Passageiro</title>
 </head>
 <body>
+    
     <header>
         <div id="header-div" class="ntext-select">
             <div id="left-content">
@@ -17,6 +18,23 @@
             </div>
             <div id="right-content">
                 <button class="btn btn-primary" id="btnSair">Sair</button>
+                <!-- Movendo o menu aqui -->
+                <div id="menu">
+                    <div id="menu-bar" onclick="menuOnClick()">
+                        <div id="bar1" class="bar"></div>
+                        <div id="bar2" class="bar"></div>
+                        <div id="bar3" class="bar"></div>
+                    </div>
+                    <nav class="nav" id="nav">
+                        <ul>
+                            <li><a href="../homePassageira/index.html">Home</a></li>
+                            <li><a href="../PerfilPassageira/index.html">Perfil</a></li>
+                            <li><a href="#" id="btnSair">Sair</a></li>
+                           
+                        </ul>
+                    </nav> 
+                </div>
+                <!-- Fim do menu -->
             </div>
             <div class="menu-bg" id="menu-bg"></div>
         </div>
@@ -66,7 +84,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="../js/homeP.js"></script>
     <script src="../sprits/perfilPassageira.js"></script>
 </body>
 </html>

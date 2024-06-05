@@ -14,40 +14,52 @@
 
     <title>Editar perfil de Passageira</title>
 </head>
-<body>
+<body> 
     <header>
-        <div id="header-div" class="ntext-select">
-            <div id="left-content">
-                <a id="header-title" href="../homePassageira/index.html"><b id="girls">GIRLS</b> drive</a>
-                <ul id="link-list">
-                </ul>
-            </div>
-            <div id="right-content">
-                <a href="#">PT-BR</a>
-                <a href="#">Ajuda</a>
-                <a href="#" class="btn btn-primary">#</a>
-            </div>
+    <div id="header-div" class="ntext-select">
+        <div id="left-content">
+            <a id="header-title" href="../homePassageira/index.html"><b id="girls">GIRLS  </b>drive</a>
+            <ul id="link-list"></ul>
         </div>
-    </header>
+        <div id="right-content">
+            <button class="btn btn-primary" id="btnSair">Sair</button>
+            <!-- Movendo o menu aqui -->
+            <div id="menu">
+                <div id="menu-bar" onclick="menuOnClick()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+                <nav class="nav" id="nav">
+                    <ul>
+                        <li><a href="../homePassageira/index.html">Home</a></li>
+                        <li><a href="../PerfilPassageira/index.html">Perfil</a></li>
+                        <li><a href="#" id="btnSair">Sair</a></li>
+                       
+                    </ul>
+                </nav> 
+            </div>
+            <!-- Fim do menu -->
+        </div>
+        <div class="menu-bg" id="menu-bg"></div>
+    </div>
+</header>
+
     <div class="d-flex justify-content-center">
         <h1 id="atualize">Atualize <br>seus dados</h1>
     </div>
     <form class="container" id="cadastroForm">
-
         <div class="mb-3" id="max-width">
             <div class="imageContainer">
                 <img src="../img/png-transparent-computer-icons-profile-s-free-angle-sphere-profile-cliparts-free.png" alt="Selecione uma imagem" id="imgPhoto">
-
             </div>
         </div>
-
-        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"/>
+        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="display: none;" />
         <span>
             <h2 style="color: aliceblue;" id="alterar-foto">Mudar foto do perfil</h2>
         </span>
         <div class="mb-3">
             <label for="nome" class="form-label">Atualize o seu Nome:</label>
-            
             <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome completo aqui">
         </div>
         <div class="mb-3">
@@ -98,5 +110,6 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
     crossorigin="anonymous"></script>
     <script src="../sprits/editar-perfil-passageira.js"></script>
+    <script src="../js/homeP.js"></script>
 </body>
 </html>
