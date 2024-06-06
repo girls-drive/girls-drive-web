@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
         return usuarios ? JSON.parse(usuarios) : [];
     }
 
+    // Obtém o motorista logado do Local Storage
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+        alert('Nenhum usuário logado encontrado.');
+        return;
+    }
+
+    const motorista_id = loggedInUser.id;
+
     // Função para exibir as corridas na tela
     function displayCorridas(filteredCorridas) {
         const usuarios = loadUsuarios();
@@ -29,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 rideElement.innerHTML = `
                     <div class="profile">
-                        <img src="${passageiro.fotoPerfilfotoPerfil ? passageiro.fotoPerfil: '../img/Rectangle 1582.png'}" alt="Foto de Perfil">
+                        <img src="${passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/Rectangle 1582.png'}" alt="Foto de Perfil">
                         <div class="details">
                             <p class="nickname">${passageiro.nome || passageiro.NomeCompleto}</p>
                         </div>
@@ -64,10 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener para o botão de pesquisa
-    searchButton.addEventListener('click', filterCorridas);
+    if (searchButton) {
+        searchButton.addEventListener('click', filterCorridas);
+    }
 
     // Carrega as corridas ao carregar a página
-    displayCorridas(loadCorridas());
+    const corridas = loadCorridas().filter(corrida => corrida.motorista_id === motorista_id || corrida.status === "agendada");
+    displayCorridas(corridas);
 
     // Event listener para os botões "Selecionar"
     ridesContainer.addEventListener('click', function(event) {
@@ -139,11 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('rideForm').addEventListener('submit', cadastrarCorrida);
 
     document.getElementById('btnSair').addEventListener('click', function() {
-        
-        localStorage.removeItem('usuarioAtual'); // ou qualquer chave específica do usuário
-      
+        localStorage.removeItem('loggedInUser'); // ou qualquer chave específica do usuário
         window.location.href = '../index.html'; // 
     });
-
-   
 });

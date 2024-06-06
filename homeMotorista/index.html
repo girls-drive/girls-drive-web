@@ -9,18 +9,35 @@
 </head>
 <body>
     <header>
-        <div id="header-div" class="text-select">
+        <div id="header-div" class="ntext-select">
             <div id="left-content">
-                <a id="header-title" href="../index.html"><b id="girls">GIRLS </b>drive</a>
+                <a id="header-title" href="../homeMotorista/index.html"><b id="girls">GIRLS  </b>drive</a>
                 <ul id="link-list"></ul>
             </div>
             <div id="right-content">
                 <button class="btn btn-primary" id="btnSair">Sair</button>
+                <!-- Movendo o menu aqui -->
+                <div id="menu">
+                    <div id="menu-bar" onclick="menuOnClick()">
+                        <div id="bar1" class="bar"></div>
+                        <div id="bar2" class="bar"></div>
+                        <div id="bar3" class="bar"></div>
+                    </div>
+                    <nav class="nav" id="nav">
+                        <ul>
+                            <li><a href="../homeMotorista/index.html">Home</a></li>
+                            <li><a href="../PerfilMotorista/index.html">Perfil</a></li>
+                            <li><a href="#" id="btnSair">Sair</a></li>
+                           
+                        </ul>
+                    </nav> 
+                </div>
+                <!-- Fim do menu -->
             </div>
-           
+            <div class="menu-bg" id="menu-bg"></div>
         </div>
     </header>
-
+    
     <div class="right">
         <div class="search-container">
             <input type="text" id="searchOrigin" placeholder="Pesquisar por Origem">
@@ -54,7 +71,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="../js/homeP.js"></script>
     <script src="../sprits/HomeMotorista.js"></script>
 </body>
 </html>

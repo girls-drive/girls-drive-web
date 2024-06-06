@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/homePassageira.css">
+    <link rel="stylesheet" href="../css/perfilPassageira.css">
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-dHLAulvl82oYzJhxW/GY56sRWY/2T37Gr4RnXsNyJvqBjj4dJ3Kn21Kb2x7ByMyL" crossorigin="anonymous">
-
-    <title>Home Passageira</title>
+    <title>Perfil Motorista</title>
 </head>
 <body>
+    
     <header>
         <div id="header-div" class="ntext-select">
             <div id="left-content">
-                <a id="header-title" href="../homePassageira/index.html"><b id="girls">GIRLS  </b>drive</a>
+                <a id="header-title" href="../homeMotorista/index.html"><b id="girls">GIRLS  </b>drive</a>
                 <ul id="link-list"></ul>
             </div>
             <div id="right-content">
@@ -28,8 +27,8 @@
                     </div>
                     <nav class="nav" id="nav">
                         <ul>
-                            <li><a href="../homePassageira/index.html">Home</a></li>
-                            <li><a href="../PerfilPassageira/index.html"">Perfil</a></li>
+                            <li><a href="../homeMotorista/index.html">Home</a></li>
+                            <li><a href="../PerfilMotorista/index.html">Perfil</a></li>
                             <li><a href="#" id="btnSair">Sair</a></li>
                            
                         </ul>
@@ -41,38 +40,29 @@
         </div>
     </header>
     
-    
-
-    <div class="right">
-        <div class="form-container">
-            <form id="rideForm">
-                <div class="input-group">
-                    <i class="far fa-circle"></i>
-                    <input type="text" id="circleFrom" name="circleFrom" placeholder="Saindo de" required>
-                </div>
+    <main>
+        <div class="profile-container">
+            <div class="profile-picture">
+                <img id="profileImage" src="" alt="Foto do Passageiro">
+            </div>
+            <div class="profile-details">
+                <h2 id="passengerName">Nome do Passageiro</h2>
+                <p id="passengerPhone">Telefone: (00) 00000-0000</p>
+                <p id="passengerEmail">Email: exemplo@gmail.com</p>
+                <br>
                 
-                <div class="input-group">
-                    <i class="far fa-circle"></i>
-                    <input type="text" id="circleTo" name="circleTo" placeholder="Indo para" required>
-                </div>
-                
-                <div class="input-group">
-                    <i class="far fa-calendar-alt"></i>
-                    <input type="date" id="date" name="date" required>
-                </div>
-                
-                <div class="input-group">
-                    <i class="far fa-clock"></i>
-                    <input type="time" id="time" name="time" required>
-                </div>
-                <a id="link-corridas" href="../corridascadastradas-provi/index.html">Link para Corridas</a>
-
-                <button type="submit">Pedir Corrida</button>
-            </form>
+                <a href="../editar-perfil-passa/index.html" class="EditarP">Editar Perfil</a>
+            </div>
         </div>
-    </div>
-<br>
-<br>
+        <hr>
+        <div class="rides-container">
+            <h3>Minhas Corridas</h3>
+            <ul id="ridesList">
+                <!-- Corridas serão carregadas aqui -->
+            </ul>
+        </div>
+    </main>
+    
     <footer>
         <div id="footer-content">
             <div id="logo">
@@ -89,14 +79,12 @@
             <div id="contact">
                 <p>Entre em contato conosco por e-mail:</p>
                 <div id="google-icon">
-                 
                     <p>drivegirls01@gmail.com</p>
                 </div>
             </div>
         </div>
     </footer>
-    
-    <script src="../sprits/HomePassageira.js"></script>]
     <script src="../js/homeP.js"></script>
+    <script src="../sprits/perfilPassageira.js"></script>
 </body>
 </html>

@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     const ridesList = document.getElementById('ridesList');
+    const btnSair = document.getElementById('btnSair');
+    
+    if (!ridesList) {
+        console.error('Elemento ridesList não encontrado no DOM');
+        return;
+    }
+    
+    if (!btnSair) {
+        console.error('Elemento btnSair não encontrado no DOM');
+        return;
+    }
 
     // Função para carregar as corridas do Local Storage
     function loadCorridas() {
@@ -13,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return usuarios ? JSON.parse(usuarios) : [];
     }
 
-    // Função para carregar os dados do passageiro logado
+    // Função para carregar os dados do motorista logado
     function loadLoggedInUser() {
         return JSON.parse(localStorage.getItem('loggedInUser'));
     }
@@ -25,93 +36,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Função para exibir os dados do passageiro
-    function displayPassengerDetails(passageiro) {
-        document.getElementById('profileImage').src = passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/Rectangle 1582.png';
-
-        document.getElementById('passengerName').textContent = capitalizeFirstLetter(passageiro.nome);
-        document.getElementById('passengerPhone').textContent = `Telefone: ${passageiro.telefone}`;
-        document.getElementById('passengerEmail').textContent = `Email: ${passageiro.email}`;
+    // Função para exibir os dados do motorista
+    function displayMotoristaDetails(motorista) {
+        document.getElementById('profileImage').src = motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png';
+        document.getElementById('passengerName').textContent = capitalizeFirstLetter(motorista.nome || motorista.NomeCompleto);
+        document.getElementById('passengerPhone').textContent = `Telefone: ${motorista.telefone}`;
+        document.getElementById('passengerEmail').textContent = `Email: ${motorista.email}`;
     }
 
-    // Função para exibir as corridas do passageiro logado
-    function displayPassengerRides(corridas, passageiroId) {
+    // Função para exibir as corridas aceitas pelo motorista logado
+    function displayMotoristaRides(corridas, motoristaId) {
         ridesList.innerHTML = '';
 
-        const passengerRides = corridas.filter(corrida => corrida.passageiro_id === passageiroId);
+        const motoristaRides = corridas.filter(corrida => corrida.motorista_id === motoristaId && corrida.status === 'aceita');
 
-        passengerRides.forEach(corrida => {
+        motoristaRides.forEach(corrida => {
             const listItem = document.createElement('li');
-            listItem.textContent = `${corrida.origem} para ${corrida.destino} em ${corrida.data} às ${corrida.hora} - Status: ${corrida.status}`;listItem.textContent = `${passageiro.nome}
-            Origem
-            ${corrida.origem}
-            Destino
-            ${corrida.destino}
-            Data
-            ${corrida.data}
-            Hora
-            ${corrida.hora}`;
-
+            listItem.innerHTML = `
+                Origem: ${corrida.origem}<br>
+                Destino: ${corrida.destino}<br>
+                Data: ${corrida.data}<br>
+                Hora: ${corrida.hora}<br>
+                Status: ${corrida.status}
+            `;
             ridesList.appendChild(listItem);
         });
     }
- // Função para carregar as corridas do Local Storage
-function loadCorridas() {
-    const corridas = localStorage.getItem('corridas');
-    console.log('Corridas no armazenamento local:', corridas);
-    return corridas ? JSON.parse(corridas) : [];
-}
-
-// Função para carregar os dados do passageiro logado
-function loadLoggedInUser() {
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    console.log('Passageiro logado:', loggedInUser);
-    return loggedInUser;
-}
-
-// Função para exibir as corridas do passageiro logado
-function displayPassengerRides(corridas, passageiroId) {
-    console.log('Corridas recebidas:', corridas);
-    console.log('ID do passageiro:', passageiroId);
-
-    ridesList.innerHTML = '';
-
-    const passengerRides = corridas.filter(corrida => corrida.passageiro_id === passageiroId);
-    console.log('Corridas do passageiro:', passengerRides);
-
-    const loggedInUser = loadLoggedInUser(); // Obter o passageiro logado
-    console.log('Passageiro logado:', loggedInUser);
-
-    passengerRides.forEach(corrida => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `${loggedInUser.nome}<br>
-                               Origem<br>
-                               ${corrida.origem}<br>
-                               Destino<br>
-                               ${corrida.destino}<br>
-                               Data<br>
-                               ${corrida.data}<br>
-                               Hora<br>
-                               ${corrida.hora}`;
-
-        ridesList.appendChild(listItem);
-    });
-}
-
 
     // Carrega os dados ao carregar a página
     const loggedInUser = loadLoggedInUser();
     if (loggedInUser) {
-        displayPassengerDetails(loggedInUser);
+        displayMotoristaDetails(loggedInUser);
 
         const corridas = loadCorridas();
-        displayPassengerRides(corridas, loggedInUser.id);
+        displayMotoristaRides(corridas, loggedInUser.id);
     } else {
         alert('Usuário não está logado.');
         window.location.href = '../index.html';
     }
 
-    document.getElementById('btnSair').addEventListener('click', function() {
+    btnSair.addEventListener('click', function() {
         localStorage.removeItem('loggedInUser'); // Remove o usuário logado
         window.location.href = '../index.html'; // Redireciona para a página inicial
     });
