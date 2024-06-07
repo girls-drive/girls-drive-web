@@ -1,12 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const ridesList = document.getElementById('ridesList');
+    const ridesListSolicitadas = document.getElementById('ridesListSolicitadas');
+    const ridesListAceitas = document.getElementById('ridesListAceitas');
     const btnSair = document.getElementById('btnSair');
-    
-    if (!ridesList) {
-        console.error('Elemento ridesList não encontrado no DOM');
+
+    if (!ridesListSolicitadas) {
+        console.error('Elemento ridesListSolicitadas não encontrado no DOM');
         return;
     }
-    
+
+    if (!ridesListAceitas) {
+        console.error('Elemento ridesListAceitas não encontrado no DOM');
+        return;
+    }
+
     if (!btnSair) {
         console.error('Elemento btnSair não encontrado no DOM');
         return;
@@ -24,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return usuarios ? JSON.parse(usuarios) : [];
     }
 
-    // Função para carregar os dados do motorista logado
+    // Função para carregar os dados do usuário logado
     function loadLoggedInUser() {
         return JSON.parse(localStorage.getItem('loggedInUser'));
     }
@@ -36,40 +42,63 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Função para exibir os dados do motorista
-    function displayMotoristaDetails(motorista) {
-        document.getElementById('profileImage').src = motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png';
-        document.getElementById('passengerName').textContent = capitalizeFirstLetter(motorista.nome || motorista.NomeCompleto);
-        document.getElementById('passengerPhone').textContent = `Telefone: ${motorista.telefone}`;
-        document.getElementById('passengerEmail').textContent = `Email: ${motorista.email}`;
+    // Função para exibir os dados do passageiro
+    function displayPassengerDetails(passageiro) {
+        document.getElementById('profileImage').src = passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/Rectangle 1582.png';
+        document.getElementById('passengerName').textContent = capitalizeFirstLetter(passageiro.nome || passageiro.NomeCompleto);
+        document.getElementById('passengerPhone').textContent = `Telefone: ${passageiro.telefone}`;
+        document.getElementById('passengerEmail').textContent = `Email: ${passageiro.email}`;
     }
 
-    // Função para exibir as corridas aceitas pelo motorista logado
-    function displayMotoristaRides(corridas, motoristaId) {
-        ridesList.innerHTML = '';
+    // Função para exibir as corridas solicitadas e aceitas
+    function displayRides(corridas, usuarioId, usuarios) {
+        ridesListSolicitadas.innerHTML = '';
+        ridesListAceitas.innerHTML = '';
 
-        const motoristaRides = corridas.filter(corrida => corrida.motorista_id === motoristaId && corrida.status === 'aceita');
+        const corridasSolicitadas = corridas.filter(corrida => corrida.passageiro_id === usuarioId && corrida.status !== 'aceita');
+        const corridasAceitas = corridas.filter(corrida => corrida.passageiro_id === usuarioId && corrida.status === 'aceita');
 
-        motoristaRides.forEach(corrida => {
+        corridasSolicitadas.forEach(corrida => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                Origem: ${corrida.origem}<br>
-                Destino: ${corrida.destino}<br>
-                Data: ${corrida.data}<br>
-                Hora: ${corrida.hora}<br>
-                Status: ${corrida.status}
+                <strong>Origem:</strong> ${corrida.origem}<br>
+                <strong>Destino:</strong> ${corrida.destino}<br>
+                <strong>Data:</strong> ${corrida.data}<br>
+                <strong>Hora:</strong> ${corrida.hora}<br>
+                <strong>Status:</strong> ${corrida.status}
             `;
-            ridesList.appendChild(listItem);
+            ridesListSolicitadas.appendChild(listItem);
+        });
+
+        corridasAceitas.forEach(corrida => {
+            const motorista = usuarios.find(usuario => usuario.id === corrida.motorista_id);
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <strong>Origem:</strong> ${corrida.origem}<br>
+                <strong>Destino:</strong> ${corrida.destino}<br>
+                <strong>Data:</strong> ${corrida.data}<br>
+                <strong>Hora:</strong> ${corrida.hora}<br>
+                <strong>Status:</strong> ${corrida.status}<br>
+                <strong>Motorista:</strong> ${capitalizeFirstLetter(motorista.nome || motorista.NomeCompleto)}<br>
+                <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
+                <strong>Cor do Carro:</strong> ${motorista.cordocarro}<br>
+                <strong>Placa do Carro:</strong> ${motorista.placadocarro}<br>
+                <img src="${motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png'}" alt="Foto do Motorista" width="100"><br>
+                <button onclick="window.location.href='avaliar_corrida.html'">Avaliar Corrida</button>
+                <button onclick="window.location.href='contato_motorista.html'">Entrar em Contato</button>
+            `;
+            ridesListAceitas.appendChild(listItem);
         });
     }
 
     // Carrega os dados ao carregar a página
     const loggedInUser = loadLoggedInUser();
     if (loggedInUser) {
-        displayMotoristaDetails(loggedInUser);
+        displayPassengerDetails(loggedInUser);
 
         const corridas = loadCorridas();
-        displayMotoristaRides(corridas, loggedInUser.id);
+        const usuarios = loadUsuarios();
+        displayRides(corridas, loggedInUser.id, usuarios);
     } else {
         alert('Usuário não está logado.');
         window.location.href = '../index.html';
