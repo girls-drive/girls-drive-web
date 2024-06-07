@@ -61,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
         corridasSolicitadas.forEach(corrida => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                <strong>Origem</strong> <br>${corrida.origem}<br>
-                <strong>Destino</strong><br> ${corrida.destino}<br>
-                <strong>Data</strong> <br>${corrida.data}<br>
-                <strong>Hora</strong> <br>${corrida.hora}<br>
-                <strong>Status</strong><br> ${corrida.status}
+                <strong>Origem:</strong> ${corrida.origem}<br>
+                <strong>Destino:</strong> ${corrida.destino}<br>
+                <strong>Data:</strong> ${corrida.data}<br>
+                <strong>Hora:</strong> ${corrida.hora}<br>
+                <strong>Status:</strong> ${corrida.status}
             `;
             ridesListSolicitadas.appendChild(listItem);
         });
@@ -74,19 +74,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const motorista = usuarios.find(usuario => usuario.id === corrida.motorista_id);
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                <div class="fotop">
+                <div style="text-align: center;">
                     <img src="${motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png'}" alt="Foto do Motorista" width="100"><br>
-                    <strong></strong> ${capitalizeFirstLetter(motorista.nome || motorista.NomeCompleto)}
+                    <strong>Motorista:</strong> ${capitalizeFirstLetter(motorista.nome || motorista.NomeCompleto)}
                 </div>
                 <div style="text-align: center;">
-                    <strong>Origem</strong> ${corrida.origem}<br>
-                    <strong>Destino</strong> ${corrida.destino}<br>
-                    <strong>Data</strong> ${corrida.data}<br>
-                    <strong>Hora</strong> ${corrida.hora}<br>
-                    <strong>Status</strong> ${corrida.status}<br>
-                    <strong>Telefone do Motorista</strong> ${motorista.telefone}<br>
-                    <strong>Cor do Carro</strong> ${motorista.cordocarro}<br>
-                    <strong>Placa do Carro</strong> ${motorista.placadocarro}<br>
+                    <strong>Origem:</strong> ${corrida.origem}<br>
+                    <strong>Destino:</strong> ${corrida.destino}<br>
+                    <strong>Data:</strong> ${corrida.data}<br>
+                    <strong>Hora:</strong> ${corrida.hora}<br>
+                    <strong>Status:</strong> ${corrida.status}<br>
+                    <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
+                    <strong>Cor do Carro:</strong> ${motorista.cordocarro}<br>
+                    <strong>Placa do Carro:</strong> ${motorista.placadocarro}<br>
                     <button onclick="window.location.href='avaliar_corrida.html'">Avaliar Corrida</button>
                     <button onclick="window.location.href='contato_motorista.html'">Entrar em Contato</button>
                 </div>
