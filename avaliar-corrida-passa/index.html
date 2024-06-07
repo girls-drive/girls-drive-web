@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliar Corrida</title>
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-block;
+        }
+
+        .star-rating input[type=radio] {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 2em;
+            color: gray;
+            cursor: pointer;
+        }
+
+        .star-rating label:before {
+            content: '★';
+        }
+
+        .star-rating input[type=radio]:checked ~ label {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Avaliar Corrida</h2>
+    <form id="avaliarForm">
+        <div>
+            <h3>Avalie o Motorista</h3>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">5 stars</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">4 stars</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">2 stars</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">1 star</label>
+            </div>
+        </div>
+        <div>
+            <h3>Comentário</h3>
+            <textarea id="comentario" rows="4" cols="50"></textarea>
+        </div>
+        <button type="submit">Enviar Avaliação</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('avaliarForm');
+            const urlParams = new URLSearchParams(window.location.search);
+            const corridaId = urlParams.get('corridaId');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const rating = document.querySelector('input[name="rating"]:checked').value;
+                const comentario = document.getElementById('comentario').value;
+
+                let corridas = localStorage.getItem('corridas');
+                if (corridas) {
+                    corridas = JSON.parse(corridas);
+                    const corrida = corridas.find(c => c.id === corridaId);
+                    if (corrida) {
+                        corrida.avaliacao = {
+                            nota: rating,
+                            comentario: comentario
+                        };
+                        localStorage.setItem('corridas', JSON.stringify(corridas));
+                        alert('Avaliação enviada com sucesso!');
+                        window.location.href = 'corridas.html';
+                    } else {
+                        alert('Corrida não encontrada.');
+                    }
+                } else {
+                    alert('Nenhuma corrida encontrada.');
+                }
+            });
+        });
+    </script>
+      <script src="../sprits/avaliar-corrida-passageiro.js"></script>
+</body>
+</html>

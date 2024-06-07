@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
                     <strong>Cor do Carro:</strong> ${motorista.cordocarro}<br>
                     <strong>Placa do Carro:</strong> ${motorista.placadocarro}<br>
-                    <button onclick="window.location.href='avaliar_corrida.html'">Avaliar Corrida</button>
+                    <button onclick="window.location.href='../avaliar-corrida-passa/index.html'">Avaliar Corrida</button>
                     <button onclick="window.location.href='contato_motorista.html'">Entrar em Contato</button>
                 </div>
             `;
