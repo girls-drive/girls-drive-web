@@ -5,10 +5,13 @@
     --white: #FFF2FF;
     --favourite: #D00BD4;
     --footer: #1D1D1D;
+    --cinza: #6D6868;
 }
 
 
-
+.fotop{
+    display: flex;
+}
 .profile-container {
     display: flex;
     flex-direction: column;
@@ -73,7 +76,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
     transition: background-color 0.3s ease;
-    display: flex;
+   
     align-items: center;
 }
 
@@ -116,6 +119,43 @@
     background-color: #e70074; 
     color: var(--white); 
 }
-.nome{
-    
+/* Estilos para as listas de corridas */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+li img {
+    float: left;
+    margin-right: 10px;
+}
+
+li div {
+    text-align: center;
+}
+
+li div {
+    text-align: left; /* Alinhar o conteúdo para a esquerda */
+}
+
+li div img {
+    float: none; /* Remover o float */
+    margin-right: 10px; /* Adicionar uma margem à direita para separar a imagem do texto */
+}
+
+
+li div strong {
+    display: block;
+}
+
+strong{
+    color: var(--cinza);
+    font-size: 20px;
 }
