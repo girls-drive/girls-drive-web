@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
         return corridas ? JSON.parse(corridas) : [];
     }
 
+    function saveCorridas(corridas) {
+        localStorage.setItem('corridas', JSON.stringify(corridas));
+    }
+
+    function loadUsuarios() {
+        const usuarios = localStorage.getItem('usuarios');
+        return usuarios ? JSON.parse(usuarios) : [];
+    }
+
+    function loadLoggedInUser() {
+        return JSON.parse(localStorage.getItem('loggedInUser'));
+    }
+
     const corridas = loadCorridas();
     console.log('Corridas após parse:', corridas);
 
@@ -28,13 +41,34 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    function loadUsuarios() {
-        const usuarios = localStorage.getItem('usuarios');
-        return usuarios ? JSON.parse(usuarios) : [];
-    }
-
     const usuarios = loadUsuarios();
     console.log('Usuários após parse:', usuarios);
+
+    const loggedInUser = loadLoggedInUser();
+    console.log('Usuário logado:', loggedInUser);
+
+    if (!loggedInUser) {
+        console.error('Usuário não está logado');
+        document.getElementById('corrida-details').innerHTML = `
+            <p>Usuário não está logado. <a href="/">Voltar para a página inicial</a></p>
+        `;
+        return;
+    }
+
+    // Verifica se o usuário logado é um motorista
+    if (loggedInUser.tipo !== 'motorista') {
+        console.error('Usuário logado não é um motorista');
+        document.getElementById('corrida-details').innerHTML = `
+            <p>Usuário logado não é um motorista. <a href="/">Voltar para a página inicial</a></p>
+        `;
+        return;
+    }
+
+    // Associa a corrida ao motorista logado
+    corrida.motorista_id = loggedInUser.id;
+    corrida.status = 'aceita';
+    saveCorridas(corridas);
+    console.log('Corrida atualizada:', corrida);
 
     const motorista = usuarios.find(u => u.id === corrida.motorista_id);
     console.log('Motorista encontrado:', motorista);

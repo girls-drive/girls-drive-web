@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
         return corridas ? JSON.parse(corridas) : [];
     }
 
+    function loadUsuarios() {
+        const usuarios = localStorage.getItem('usuarios');
+        return usuarios ? JSON.parse(usuarios) : [];
+    }
+
+    function loadLoggedInUser() {
+        return JSON.parse(localStorage.getItem('loggedInUser'));
+    }
+
+    function saveCorridas(corridas) {
+        localStorage.setItem('corridas', JSON.stringify(corridas));
+    }
+
     const corridas = loadCorridas();
     console.log('Corridas após parse:', corridas);
 
@@ -28,13 +41,19 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    function loadUsuarios() {
-        const usuarios = localStorage.getItem('usuarios');
-        return usuarios ? JSON.parse(usuarios) : [];
-    }
-
     const usuarios = loadUsuarios();
     console.log('Usuários após parse:', usuarios);
+
+    const loggedInUser = loadLoggedInUser();
+    console.log('Usuário logado:', loggedInUser);
+
+    if (!loggedInUser) {
+        console.error('Usuário não está logado');
+        document.getElementById('corrida-details').innerHTML = `
+            <p>Usuário não está logado. <a href="/">Voltar para a página inicial</a></p>
+        `;
+        return;
+    }
 
     const passageiro = usuarios.find(u => u.id === corrida.passageiro_id);
     console.log('Passageiro encontrado:', passageiro);
@@ -60,34 +79,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="nomeP">${passageiro.nome}</p>
             </div>
             <div class="corrida-info">
-                <p><strong>Origem</strong> </p>
+                <p><strong>Origem</strong></p>
                 <p>${corrida.origem}</p>
                 <p><strong>Destino</strong></p>
                 <p>${corrida.destino}</p>
                 <p><strong>Data</strong></p>
-                <p> ${corrida.data}</p>
-                <p><strong>Horário</strong> 
-                </p>${corrida.hora}</p>
+                <p>${corrida.data}</p>
+                <p><strong>Horário</strong></p>
+                <p>${corrida.hora}</p>
             </div>
             <div class="contato-info">
-              
-                </strong></p>
                 <p><strong>Telefone</strong></p>
                 <p>${passageiro.telefone || 'Telefone não disponível'}</p>
-               <br>
-             
-               
             </div>
             <button id="accept-corrida">Entrar em contato com passageiro</button>
-            
         `;
     }
 
     displayCorridaDetails(corrida, passageiro);
-
-    function saveCorridas(corridas) {
-        localStorage.setItem('corridas', JSON.stringify(corridas));
-    }
 
     document.getElementById('corrida-details').addEventListener('click', function(event) {
         if (event.target && event.target.id === 'accept-corrida') {
@@ -102,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function aceitarCorrida(id) {
         const corridas = loadCorridas();
         const corridaIndex = corridas.findIndex(c => c.id === id);
-        
+
         if (corridaIndex === -1) {
             console.error('Corrida não encontrada para aceitar');
             return;
@@ -111,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const passInfo = usuarios.find(u => u.id === corridas[corridaIndex].passageiro_id);
         
         corridas[corridaIndex].status = 'aceita';
-        corridas[corridaIndex].motorista_id = "2"; 
+        corridas[corridaIndex].motorista_id = loggedInUser.id; // Usa o ID do usuário logado
         saveCorridas(corridas);
 
         alert('Corrida aceita com sucesso!');

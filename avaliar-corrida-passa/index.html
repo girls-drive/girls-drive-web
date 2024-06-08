@@ -63,7 +63,7 @@
                 let corridas = localStorage.getItem('corridas');
                 if (corridas) {
                     corridas = JSON.parse(corridas);
-                    const corrida = corridas.find(c => c.id === corridaId);
+                    const corrida = corridas.find(c => c.id.toString() === corridaId);
                     if (corrida) {
                         corrida.avaliacao = {
                             nota: rating,
@@ -71,7 +71,7 @@
                         };
                         localStorage.setItem('corridas', JSON.stringify(corridas));
                         alert('Avaliação enviada com sucesso!');
-                        window.location.href = 'corridas.html';
+                        window.location.href = '../PerfilPassageira/index.html'; 
                     } else {
                         alert('Corrida não encontrada.');
                     }
@@ -81,6 +81,5 @@
             });
         });
     </script>
-      <script src="../sprits/avaliar-corrida-passageiro.js"></script>
 </body>
 </html>
