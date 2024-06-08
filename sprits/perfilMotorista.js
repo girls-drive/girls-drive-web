@@ -78,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     Data: ${corrida.data}<br>
                     Hora: ${corrida.hora}<br>
                     Status: ${corrida.status}
+                     <button onclick="window.location.href='../avaliar-corrida-moto/index.html?corridaId=${corrida.id}'">Avaliar Corrida</button>
+                    <button onclick="window.location.href='contato_motorista.html'">Entrar em Contato</button>
                 </div>
                 <div style="text-align: center;">
                     <strong>Avaliação da passageira:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
