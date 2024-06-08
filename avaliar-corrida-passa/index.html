@@ -3,43 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/avaliarcorridapassa.css">
+    <link rel="stylesheet" href="../common.css">
     <title>Avaliar Corrida</title>
-    <style>
-        .star-rating {
-            direction: rtl;
-            display: inline-block;
-        }
-
-        .star-rating input[type=radio] {
-            display: none;
-        }
-
-        .star-rating label {
-            font-size: 2em;
-            color: gray;
-            cursor: pointer;
-        }
-
-        .star-rating label:before {
-            content: '★';
-        }
-
-        .star-rating input[type=radio]:checked ~ label {
-            color: gold;
-        }
-    </style>
 </head>
 <body>
+    <header>
+        <div id="header-div" class="ntext-select">
+            <div id="left-content">
+                <a id="header-title" href="../homePassageira/index.html"><b id="girls">GIRLS  </b>drive</a>
+                <ul id="link-list"></ul>
+            </div>
+            <div id="right-content">
+                <button class="btn btn-primary" id="btnSair">Sair</button>
+                <div id="menu">
+                    <div id="menu-bar" onclick="menuOnClick()">
+                        <div id="bar1" class="bar"></div>
+                        <div id="bar2" class="bar"></div>
+                        <div id="bar3" class="bar"></div>
+                    </div>
+                    <nav class="nav" id="nav">
+                        <ul>
+                            <li><a href="../homePassageira/index.html">Home</a></li>
+                            <li><a href="../PerfilPassageira/index.html">Perfil</a></li>
+                            <li><a href="#" id="btnSair">Sair</a></li>
+                        </ul>
+                    </nav> 
+                </div>
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
+        </div>
+    </header>
+    
     <h2>Avaliar Corrida</h2>
     <form id="avaliarForm">
         <div>
             <h3>Avalie o Motorista</h3>
             <div class="star-rating">
-                <input type="radio" id="star5" name="rating" value="5"><label for="star5">5 stars</label>
-                <input type="radio" id="star4" name="rating" value="4"><label for="star4">4 stars</label>
-                <input type="radio" id="star3" name="rating" value="3"><label for="star3">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2"><label for="star2">2 stars</label>
-                <input type="radio" id="star1" name="rating" value="1"><label for="star1">1 star</label>
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
             </div>
         </div>
         <div>
@@ -48,38 +53,7 @@
         </div>
         <button type="submit">Enviar Avaliação</button>
     </form>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('avaliarForm');
-            const urlParams = new URLSearchParams(window.location.search);
-            const corridaId = urlParams.get('corridaId');
-
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const rating = document.querySelector('input[name="rating"]:checked').value;
-                const comentario = document.getElementById('comentario').value;
-
-                let corridas = localStorage.getItem('corridas');
-                if (corridas) {
-                    corridas = JSON.parse(corridas);
-                    const corrida = corridas.find(c => c.id.toString() === corridaId);
-                    if (corrida) {
-                        corrida.avaliacao = {
-                            nota: rating,
-                            comentario: comentario
-                        };
-                        localStorage.setItem('corridas', JSON.stringify(corridas));
-                        alert('Avaliação enviada com sucesso!');
-                        window.location.href = '../PerfilPassageira/index.html'; 
-                    } else {
-                        alert('Corrida não encontrada.');
-                    }
-                } else {
-                    alert('Nenhuma corrida encontrada.');
-                }
-            });
-        });
-    </script>
+    <script src="../js/homeP.js"></script>
+    <script src="../sprits/avaliar-corrida-passageiro.js"></script>
 </body>
 </html>
