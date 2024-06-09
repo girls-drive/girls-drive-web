@@ -11,7 +11,14 @@ body {
     background-color: #f2f2f2;
     font-family: Arial, sans-serif;
 }
-
+.btncorrida{
+    background-color: var(--favourite);
+    color: var(--white);
+    border: none;
+    width: 10%;
+    height: 13%;
+    border-radius: 5px;
+}
 .profile-container {
     display: flex;
     flex-direction: column;

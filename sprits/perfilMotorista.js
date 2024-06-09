@@ -69,20 +69,25 @@ document.addEventListener('DOMContentLoaded', function() {
             listItem.innerHTML = `
                 <div style="text-align: center;">
                     <img src="${passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/Rectangle 1582.png'}" alt="Foto do Passageiro" width="100"><br>
-                    <strong>Passageiro:</strong> ${capitalizeFirstLetter(passageiro.nome || passageiro.NomeCompleto)}
+                    <strong>Passageira</strong> ${capitalizeFirstLetter(passageiro.nome || passageiro.NomeCompleto)}
                 </div>
                 <div style="text-align: center;">
                     Origem: ${corrida.origem}<br>
                     Destino: ${corrida.destino}<br>
-                    <strong>Telefone do Passageiro:</strong> ${passageiro.telefone}<br>
+                    <strong>Telefone do Passageira:</strong> ${passageiro.telefone}<br>
                     Data: ${corrida.data}<br>
                     Hora: ${corrida.hora}<br>
-                    Status: ${corrida.status}
-                     <button onclick="window.location.href='../avaliar-corrida-moto/index.html?corridaId=${corrida.id}'">Avaliar Corrida</button>
-                    <button onclick="window.location.href='contato_motorista.html'">Entrar em Contato</button>
+                    Status: ${corrida.status} <br>
+                     <button onclick="window.location.href='../avaliar-corrida-moto/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
+                    <button onclick="window.location.href='contato_motorista.html'"class="btncorrida">Entrar em Contato</button>
                 </div>
-                <div style="text-align: center;">
-                    <strong>Avaliação da passageira:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
+                 
+                    <div style="text-align: center;">
+                        <strong>Minha avaliação para da passageira:</strong> ${corrida.avaliacaoPassageiro ? `${corrida.avaliacaoPassageiro.nota} estrelas - ${corrida.avaliacaoPassageiro.comentario}` : 'Nenhuma avaliação ainda'}
+                    </div>
+                    <div style="text-align: center;">
+                        <strong>Nota que recebi da passageira:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
+                    </div>
                 </div>
             `;
             ridesList.appendChild(listItem);

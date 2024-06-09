@@ -89,9 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <strong>Placa do Carro:</strong> ${motorista.placadocarro}<br>
                          <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'">Avaliar Corrida</button>
                     <button onclick="window.location.href='contato_motorista.html'">Entrar em Contato</button>
-                     <div style="text-align: center;">
-                    <strong>Avaliação do motorista:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
-                </div>
+                      <div style="text-align: center;">
+                        <strong>Minha avaliação para da corrida:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
+                    </div>
+                    <div style="text-align: center;">
+                        <strong>Nota que recebi do motorista:</strong> ${corrida.avaliacaoPassageiro ? `${corrida.avaliacaoPassageiro.nota} estrelas - ${corrida.avaliacaoPassageiro.comentario}` : 'Nenhuma avaliação ainda'}
+                    </div>
                 </div>
             `;
             ridesListAceitas.appendChild(listItem);

@@ -1,34 +1,30 @@
-'use strict';
-
-let photo = document.getElementById('imgPhoto');
-let file = document.getElementById('avatar');
-
-photo.addEventListener('click', () => {
-    file.click();
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     'use strict';
+
+    let photo = document.getElementById('imgPhoto');
+    let file = document.getElementById('avatar');
+
+    photo.addEventListener('click', () => {
+        file.click();
+    });
 
     const form = document.getElementById('cadastroForm');
     const profileImage = document.getElementById('imgPhoto');
     const fileInput = document.getElementById('avatar');
 
-   
     function loadLoggedInUser() {
         const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
         console.log('Motorista logado:', loggedInUser);
         return loggedInUser;
     }
 
-  
-    function displayPassengerDetails( motorista) {
-        profileImage.src =  motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png';
-        document.getElementById('nome').value =  motorista.nome;
-        document.getElementById('email').value =  motorista.email;
-        document.getElementById('senha').value =  motorista.senha;
-        document.getElementById('repetir-senha').value =  motorista.senha;
-        document.getElementById('telefone').value =  motorista.telefone;
+    function displayPassengerDetails(motorista) {
+        profileImage.src = motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png';
+        document.getElementById('nome').value = motorista.nome;
+        document.getElementById('email').value = motorista.email;
+        document.getElementById('senha').value = motorista.senha;
+        document.getElementById('repetir-senha').value = motorista.senha;
+        document.getElementById('telefone').value = motorista.telefone;
     }
 
     // Máscara para telefone
@@ -42,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         event.target.value = phone;
     });
 
-   
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -65,11 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-       
         if (fileInput.files.length > 0) {
             const reader = new FileReader();
             reader.onloadend = function() {
-                const  motorista = {
+                const motorista = {
                     ...loggedInUser,
                     nome: nome,
                     email: email,
@@ -77,11 +71,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     telefone: telefone,
                     fotoPerfil: reader.result
                 };
-                savePassengerDetails( motorista);
+                savePassengerDetails(motorista);
             };
             reader.readAsDataURL(fileInput.files[0]);
         } else {
-            const  motorista = {
+            const motorista = {
                 ...loggedInUser,
                 nome: nome,
                 email: email,
@@ -89,28 +83,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 telefone: telefone,
                 fotoPerfil: profileImage.src
             };
-            savePassengerDetails( motorista);
+            savePassengerDetails(motorista);
         }
     });
 
-    
-    function savePassengerDetails( motorista) {
-
+    function savePassengerDetails(motorista) {
         let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-        const loggedInUserIndex = usuarios.findIndex(user => user.id ===  motorista.id);
+        const loggedInUserIndex = usuarios.findIndex(user => user.id === motorista.id);
         if (loggedInUserIndex > -1) {
-            usuarios[loggedInUserIndex] =  motorista;
+            usuarios[loggedInUserIndex] = motorista;
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
         }
 
-      
-        localStorage.setItem('loggedInUser', JSON.stringify( motorista));
+        localStorage.setItem('loggedInUser', JSON.stringify(motorista));
 
         alert('Dados atualizados com sucesso!');
-        displayPassengerDetails( motorista);
+        window.location.href = '../PerfilMotorista/index.html';
     }
 
-    // Carregar e exibir os dados ao carregar a página
     const loggedInUser = loadLoggedInUser();
     if (loggedInUser) {
         displayPassengerDetails(loggedInUser);
@@ -124,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '../index.html';
     });
 
-    // Alterar a foto de perfil
     fileInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
         const reader = new FileReader();
