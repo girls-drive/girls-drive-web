@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
                     <strong>Cor do Carro:</strong> ${motorista.cordocarro}<br>
                     <strong>Placa do Carro:</strong> ${motorista.placadocarro}<br>
-                         <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'">Avaliar Corrida</button>
-                    <button onclick="window.location.href='contato_motorista.html'">Entrar em Contato</button>
+                         <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
+                    <button onclick="window.location.href='contato_motorista.html'"class="btncorrida">Entrar em Contato</button>
                       <div style="text-align: center;">
                         <strong>Minha avaliação para da corrida:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
                     </div>
