@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('telefone').value = motorista.telefone;
     }
 
-    // Máscara para telefone
     document.getElementById('telefone').addEventListener('input', function(event) {
         let phone = event.target.value.replace(/\D/g, '');
         if (phone.length > 11) {
