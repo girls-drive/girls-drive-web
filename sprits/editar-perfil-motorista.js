@@ -12,21 +12,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileImage = document.getElementById('imgPhoto');
     const fileInput = document.getElementById('avatar');
 
-    function loadLoggedInUser() {
-        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    // Função para carregar todos os usuários do JSON
+    function loadUsers() {
+        return JSON.parse(localStorage.getItem('usuarios')) || [];
+    }
+
+    // Função para encontrar e retornar o motorista logado
+    function findLoggedInUser(users) {
+        const loggedInUser = users.find(user => user.tipo === 'motorista');
         console.log('Motorista logado:', loggedInUser);
         return loggedInUser;
     }
 
-    function displayPassengerDetails(motorista) {
-        profileImage.src = motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png';
-        document.getElementById('nome').value = motorista.nome;
-        document.getElementById('email').value = motorista.email;
-        document.getElementById('senha').value = motorista.senha;
-        document.getElementById('repetir-senha').value = motorista.senha;
-        document.getElementById('telefone').value = motorista.telefone;
+    // Função para exibir os detalhes do motorista no formulário
+    function displayDriverDetails(motorista) {
+        if (motorista) {
+            profileImage.src = motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png';
+            document.getElementById('nome').value = motorista.nome || '';
+            document.getElementById('placadocarro').value = motorista.placadocarro || '';
+            document.getElementById('email').value = motorista.email || '';
+            document.getElementById('senha').value = motorista.senha || '';
+            document.getElementById('repetir-senha').value = motorista.senha || '';
+            document.getElementById('telefone').value = motorista.telefone || '';
+        }
     }
 
+    // Adicionando evento de input para formatar o telefone
     document.getElementById('telefone').addEventListener('input', function(event) {
         let phone = event.target.value.replace(/\D/g, '');
         if (phone.length > 11) {
@@ -37,90 +48,81 @@ document.addEventListener('DOMContentLoaded', function() {
         event.target.value = phone;
     });
 
+    // Adicionando evento de submit para salvar as alterações
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
         const nome = document.getElementById('nome').value;
         const email = document.getElementById('email').value;
+        const placadocarro = document.getElementById('placadocarro').value;
         const senha = document.getElementById('senha').value;
         const repetirSenha = document.getElementById('repetir-senha').value;
         const telefone = document.getElementById('telefone').value;
 
         if (senha !== repetirSenha) {
-            alert('As senhas não coincidem. Por favor, digite novamente.');
+            alert('As senhas não coincidem. Por favor, verifique.');
             return;
         }
 
-        const loggedInUser = loadLoggedInUser();
-
-        if (!loggedInUser) {
+        let users = loadUsers();
+        let motorista = findLoggedInUser(users);
+        if (!motorista) {
             alert('Usuário não está logado.');
-            window.location.href = '../index.html';
             return;
         }
+        motorista.nome = nome;
+        motorista.email = email;
+        motorista.placadocarro = placadocarro;
+        motorista.senha = senha;
+        motorista.telefone = telefone;
 
-        if (fileInput.files.length > 0) {
-            const reader = new FileReader();
-            reader.onloadend = function() {
-                const motorista = {
-                    ...loggedInUser,
-                    nome: nome,
-                    email: email,
-                    senha: senha,
-                    telefone: telefone,
-                    fotoPerfil: reader.result
-                };
-                savePassengerDetails(motorista);
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        } else {
-            const motorista = {
-                ...loggedInUser,
-                nome: nome,
-                email: email,
-                senha: senha,
-                telefone: telefone,
-                fotoPerfil: profileImage.src
-            };
-            savePassengerDetails(motorista);
-        }
-    });
-
-    function savePassengerDetails(motorista) {
-        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-        const loggedInUserIndex = usuarios.findIndex(user => user.id === motorista.id);
-        if (loggedInUserIndex > -1) {
-            usuarios[loggedInUserIndex] = motorista;
-            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        // Atualizando o usuário no JSON
+        const index = users.findIndex(user => user.tipo === 'motorista');
+        if (index !== -1) {
+            users[index] = motorista;
+            localStorage.setItem('usuarios', JSON.stringify(users));
         }
 
+        // Salvando o motorista logado no localStorage
         localStorage.setItem('loggedInUser', JSON.stringify(motorista));
-
-        alert('Dados atualizados com sucesso!');
+        console.log('Dados do motorista salvos:', motorista);
+        alert('Dados do motorista salvos com sucesso!');
         window.location.href = '../PerfilMotorista/index.html';
-    }
+    });
 
-    const loggedInUser = loadLoggedInUser();
+    // Adicionando evento de mudança para a foto do perfil
+    fileInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                profileImage.src = event.target.result;
+                let users = loadUsers();
+                let motorista = findLoggedInUser(users);
+                if (!motorista) {
+                    alert('Usuário não está logado.');
+                    return;
+                }
+                motorista.fotoPerfil = event.target.result;
+
+                // Atualizando o usuário no JSON
+                const index = users.findIndex(user => user.tipo === 'motorista');
+                if (index !== -1) {
+                    users[index] = motorista;
+                    localStorage.setItem('usuarios', JSON.stringify(users));
+                }
+
+                // Salvando o motorista logado no localStorage
+                localStorage.setItem('loggedInUser', JSON.stringify(motorista));
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Carregando o motorista logado ao carregar a página
+    const users = loadUsers();
+    const loggedInUser = findLoggedInUser(users);
     if (loggedInUser) {
-        displayPassengerDetails(loggedInUser);
-    } else {
-        alert('Usuário não está logado.');
-        window.location.href = '../index.html';
+        displayDriverDetails(loggedInUser);
     }
-
-    document.getElementById('btnSair').addEventListener('click', function() {
-        localStorage.removeItem('loggedInUser');
-        window.location.href = '../index.html';
-    });
-
-    fileInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = function() {
-            profileImage.src = reader.result;
-        };
-
-        reader.readAsDataURL(file);
-    });
 });
