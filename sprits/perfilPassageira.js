@@ -1,48 +1,34 @@
+// Código da página de perfil da passageira
 document.addEventListener('DOMContentLoaded', function() {
     const ridesListSolicitadas = document.getElementById('ridesListSolicitadas');
     const ridesListAceitas = document.getElementById('ridesListAceitas');
     const btnSair = document.getElementById('btnSair');
 
-    if (!ridesListSolicitadas) {
-        console.error('Elemento ridesListSolicitadas não encontrado no DOM');
+    if (!ridesListSolicitadas || !ridesListAceitas || !btnSair) {
+        console.error('Elemento necessário não encontrado no DOM');
         return;
     }
 
-    if (!ridesListAceitas) {
-        console.error('Elemento ridesListAceitas não encontrado no DOM');
-        return;
-    }
-
-    if (!btnSair) {
-        console.error('Elemento btnSair não encontrado no DOM');
-        return;
-    }
-
-    // Função para carregar as corridas do Local Storage
     function loadCorridas() {
         const corridas = localStorage.getItem('corridas');
         return corridas ? JSON.parse(corridas) : [];
     }
 
-    // Função para carregar os usuários do Local Storage
     function loadUsuarios() {
         const usuarios = localStorage.getItem('usuarios');
         return usuarios ? JSON.parse(usuarios) : [];
     }
 
-    // Função para carregar os dados do usuário logado
     function loadLoggedInUser() {
         return JSON.parse(localStorage.getItem('loggedInUser'));
     }
 
-    // Função para capitalizar a primeira letra de cada palavra
     function capitalizeFirstLetter(str) {
         return str.replace(/\b\w/g, function(char) {
             return char.toUpperCase();
         });
     }
 
-    // Função para exibir os dados do passageiro
     function displayPassengerDetails(passageiro) {
         document.getElementById('profileImage').src = passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/Rectangle 1582.png';
         document.getElementById('passengerName').textContent = capitalizeFirstLetter(passageiro.nome || passageiro.NomeCompleto);
@@ -50,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('passengerEmail').textContent = `Email: ${passageiro.email}`;
     }
 
-    // Função para exibir as corridas solicitadas e aceitas
     function displayRides(corridas, usuarioId, usuarios) {
         ridesListSolicitadas.innerHTML = '';
         ridesListAceitas.innerHTML = '';
@@ -87,9 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
                     <strong>Cor do Carro:</strong> ${motorista.cordocarro}<br>
                     <strong>Placa do Carro:</strong> ${motorista.placadocarro}<br>
-                         <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
-                    <button onclick="window.location.href='contato_motorista.html'"class="btncorrida">Entrar em Contato</button>
-                      <div style="text-align: center;">
+                    <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
+                    <button onclick="window.location.href='../entrarcont-versP/index.html?corridaId=${corrida.id}'" class="btncorrida">Entrar em Contato</button>
+                    <div style="text-align: center;">
                         <strong>Minha avaliação para da corrida:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
                     </div>
                     <div style="text-align: center;">
@@ -101,11 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Carrega os dados ao carregar a página
     const loggedInUser = loadLoggedInUser();
     if (loggedInUser) {
         displayPassengerDetails(loggedInUser);
-
         const corridas = loadCorridas();
         const usuarios = loadUsuarios();
         displayRides(corridas, loggedInUser.id, usuarios);
@@ -115,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     btnSair.addEventListener('click', function() {
-        localStorage.removeItem('loggedInUser'); // Remove o usuário logado
-        window.location.href = '../index.html'; // Redireciona para a página inicial
+        localStorage.removeItem('loggedInUser');
+        window.location.href = '../index.html';
     });
 });

@@ -1,0 +1,137 @@
+:root {
+    --pink: #D00BD4;
+    --lightpink: #CA84DB;
+    --black: #242323;
+    --white: #FFF2FF;
+    --favourite: #D00BD4;
+    --footer: #1D1D1D;
+    --gray: #7D7D7D; /* Definindo a variável para cinza */
+}
+
+#aceitar {
+    background-color: var(--black);
+    width: 700px; 
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#accept-corrida {
+    background-color: var(--favourite);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#accept-corrida:hover {
+    background-color: var(--lightpink);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+strong {
+    color: var(--gray);
+    font-size: 25px;
+}
+
+#corrida-details {
+    width: 100%;
+    max-width: 600px; /* Define a largura máxima */
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    text-align: center; /* Centraliza conteúdo dentro do elemento */
+    margin: 50px auto; /* Centraliza horizontalmente e adiciona margem superior */
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.name-address {
+    text-align: left;
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: 25px;
+    color: var(--black);
+}
+
+p {
+    margin: 5px 0;
+    color: var(--black);
+}
+
+.button-wrapper {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#contact-motorista {
+    background-color: var(--pink); /* Alterando para cor rosa */
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+#contact-motorista:hover {
+    background-color: var(--lightpink); /* Cor rosa mais clara ao passar o mouse */
+}
+
+.infos {
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.bold-black {
+    font-weight: bold;
+    color: var(--black);
+}
+
+.hr {
+    border: none;
+    border-top: 3px solid var(--black);
+    margin: 20px 0;
+}
+
+.nomeP {
+    color: var(--favourite);
+    font-size: 30px;
+    font-weight: bold;
+}
