@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const repetirSenha = document.getElementById('repetir-senha').value;
         const telefone = document.getElementById('telefone').value;
 
+        if (!nome || !email || !senha || !repetirSenha || !telefone) {
+            alert('Por favor, preencha todos os campos.');
+            return false;
+        }
         if (senha !== repetirSenha) {
             alert('As senhas não coincidem. Por favor, digite novamente.');
             return;
