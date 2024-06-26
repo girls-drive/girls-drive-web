@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
             alert('Cadastro realizado com sucesso!');
+            window.location.href = '../homeMotorista/index.html';
             form.reset();
         } catch (e) {
             alert('Erro ao salvar os dados. O limite de armazenamento foi excedido.');

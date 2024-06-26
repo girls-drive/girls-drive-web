@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         alert('Dados atualizados com sucesso!');
         displayPassengerDetails(passageiro);
+        window.location.href = '../PerfilPassageira/index.html';
     }
 
     // Carregar e exibir os dados ao carregar a página

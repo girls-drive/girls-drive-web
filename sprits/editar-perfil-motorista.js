@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         alert('Dados atualizados com sucesso!');
         displayPassengerDetails(motorista);
+        window.location.href = '../PerfilMotorista/index.html';
                 }
         }
     });
