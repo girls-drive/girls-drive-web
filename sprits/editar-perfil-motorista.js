@@ -149,11 +149,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Usuários atualizados no localStorage:', users);
                 }
 
-                // Salvando o motorista logado no localStorage
                 localStorage.setItem('loggedInUser', JSON.stringify(motorista));
-                console.log('Motorista logado atualizado no localStorage:', motorista);
-            }
-            reader.readAsDataURL(file);
+
+        alert('Dados atualizados com sucesso!');
+        displayPassengerDetails(motorista);
+                }
         }
     });
 
