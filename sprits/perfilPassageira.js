@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <strong>Hora:</strong> ${corrida.hora}<br>
                     <strong>Status:</strong> ${corrida.status}<br>
                     <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
-                    <strong>Cor do Carro:</strong> ${motorista.cordocarro}<br>
-                    <strong>Placa do Carro:</strong> ${motorista.placadocarro}<br>
+                    <strong>Cor do Carro:</strong> ${motorista.cor}<br>
+                    <strong>Placa do Carro:</strong> ${motorista.placa}<br>
                     <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
                     <button onclick="window.location.href='../entrarcont-versP/index.html?corridaId=${corrida.id}'" class="btncorrida">Entrar em Contato</button>
                     <div style="text-align: center;">
