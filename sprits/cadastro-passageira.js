@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Salvar usuários no localStorage
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
+        localStorage.setItem('loggedInUser', JSON.stringify(novoUsuario));
         alert('Cadastro realizado com sucesso!');
         window.location.href = '../homePassageira/index.html';
         form.reset();

@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
+            localStorage.setItem('loggedInUser', JSON.stringify(novoUsuario));
             alert('Cadastro realizado com sucesso!');
             window.location.href = '../homeMotorista/index.html';
             form.reset();
