@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const filteredCorridas = corridas.filter(corrida => {
             const origemMatch = corrida.origem.toLowerCase().includes(originValue);
             const destinoMatch = corrida.destino.toLowerCase().includes(destinationValue);
-            return origemMatch && destinoMatch;
+            return origemMatch && destinoMatch && corrida.status === "agendada";
         });
 
         displayCorridas(filteredCorridas);
@@ -78,15 +78,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Carrega as corridas ao carregar a página
-    const corridas = loadCorridas().filter(corrida => corrida.motorista_id === motorista_id || corrida.status === "agendada");
+    const corridas = loadCorridas().filter(corrida => corrida.status === "agendada");
     displayCorridas(corridas);
 
     // Event listener para os botões "Selecionar"
     ridesContainer.addEventListener('click', function(event) {
         if (event.target.classList.contains('select-button')) {
             const corridaId = event.target.getAttribute('data-id');
-            // Redirecionar para a página de aceitação de corrida com o ID da corrida na URL
-            window.location.href = `../aceitar-corrida/index.html?id=${corridaId}`;
+            // Atualiza o status da corrida para "aceita" e salva no Local Storage
+            const corridas = loadCorridas();
+            const index = corridas.findIndex(corrida => corrida.id === corridaId);
+            if (index !== -1) {
+                corridas[index].status = "aceita";
+                localStorage.setItem('corridas', JSON.stringify(corridas));
+                alert('Corrida aceita com sucesso!');
+                // Recarrega as corridas para atualizar a lista
+                const filteredCorridas = corridas.filter(corrida => corrida.status === "agendada");
+                displayCorridas(filteredCorridas);
+            }
         }
     });
 
@@ -150,8 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adiciona um evento de submit ao formulário
     document.getElementById('rideForm').addEventListener('submit', cadastrarCorrida);
 
+    // Event listener para o botão de sair
     document.getElementById('btnSair').addEventListener('click', function() {
-        localStorage.removeItem('loggedInUser'); // ou qualquer chave específica do usuário
-        window.location.href = '../index.html'; // 
+        localStorage.removeItem('loggedInUser'); // Remove o usuário logado
+        window.location.href = '../index.html'; // Redireciona para a página inicial
     });
 });

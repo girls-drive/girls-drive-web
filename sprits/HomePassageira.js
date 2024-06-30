@@ -31,6 +31,19 @@ function cadastrarCorrida(event) {
         return;
     }
 
+    // Verifica se a data inserida é hoje ou uma data futura
+    const hoje = new Date();
+    const dataInserida = new Date(data);
+
+    // Zera a hora, minuto, segundo e milissegundo para comparação apenas da data
+    hoje.setHours(0, 0, 0, 0);
+    dataInserida.setHours(0, 0, 0, 0);
+
+    if (dataInserida < hoje) {
+        alert('Por favor, insira uma data a partir de hoje.');
+        return;
+    }
+
     // Verifica se o usuário está logado
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (!loggedInUser) {
@@ -56,7 +69,7 @@ function cadastrarCorrida(event) {
         hora: hora,
         status: "agendada", // Status inicial da corrida
         passageiro_id: passageiro_id, // ID do passageiro logado
-        motorista_id: "2" // ID do motorista (substitua pelo ID do motorista atribuído à corrida)
+        motorista_id: "" // Inicialmente vazio, será preenchido quando um motorista aceitar
     };
 
     // Adiciona a nova corrida à lista de corridas
@@ -70,6 +83,9 @@ function cadastrarCorrida(event) {
 
     // Log as corridas no console
     logCorridasNoConsole();
+    document.getElementById('rideForm').reset();
+    // Redireciona para a página de perfil da passageira
+    window.location.href = '../PerfilPassageira/index.html';
 }
 
 // Adiciona um evento de submit ao formulário
