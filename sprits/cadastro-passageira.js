@@ -83,10 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Para se cadastrar, você precisa ter pelo menos 18 anos de idade.');
             return;
         }
-        if(idade > 90){
-            alert('Digite uma idade valida!');
-            return;
-        }
+      
 
         // Converter o arquivo de identidade em base64
         const identidade = document.getElementById('anexo').files[0];
