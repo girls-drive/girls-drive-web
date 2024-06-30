@@ -69,7 +69,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const aniversario = document.getElementById('aniversario').value;
         const endereco = document.getElementById('endereco').value;
         const email = document.getElementById('email').value;
+        
+        // Verificar se a idade é maior ou igual a 18 anos
+        const dataNascimento = new Date(aniversario);
+        const hoje = new Date();
+        const idade = hoje.getFullYear() - dataNascimento.getFullYear();
+        const mes = hoje.getMonth() - dataNascimento.getMonth();
+        if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+            idade--;
+        }
 
+        if (idade < 18) {
+            alert('Para se cadastrar, você precisa ter pelo menos 18 anos de idade.');
+            return;
+        }
         // Converter o arquivo de identidade em base64
         const identidade = document.getElementById('anexo').files[0];
         const identidadeBase64 = identidade ? await fileToBase64(identidade) : '';

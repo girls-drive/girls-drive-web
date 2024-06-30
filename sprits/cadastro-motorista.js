@@ -63,6 +63,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const placa = document.getElementById('placa').value;
         const cor = document.getElementById('cor').value;
 
+        // Verificar se a idade é maior ou igual a 18 anos
+        const dataNascimento = new Date(aniversario);
+        const hoje = new Date();
+        const idade = hoje.getFullYear() - dataNascimento.getFullYear();
+        const mes = hoje.getMonth() - dataNascimento.getMonth();
+        if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+            idade--;
+        }
+
+        if (idade < 18) {
+            alert('Para se cadastrar, você precisa ter pelo menos 18 anos de idade.');
+            return;
+        }
+
         if (!sexo || sexo === 'masculino') {
             alert('Somente o gênero feminino pode se cadastrar.');
             return;
