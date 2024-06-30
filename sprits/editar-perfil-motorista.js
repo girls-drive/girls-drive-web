@@ -151,10 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 localStorage.setItem('loggedInUser', JSON.stringify(motorista));
 
-        alert('Dados atualizados com sucesso!');
-        displayPassengerDetails(motorista);
-        window.location.href = '../PerfilMotorista/index.html';
-                }
+                alert('Dados atualizados com sucesso!');
+                displayDriverDetails(motorista);
+            };
+            reader.readAsDataURL(file);
         }
     });
 
