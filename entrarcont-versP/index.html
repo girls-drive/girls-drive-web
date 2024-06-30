@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../common.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title> Entrar em contato</title>
+    <title> Entrar em contato com motorista</title>
 </head>
 <body>
     <header>
@@ -17,10 +17,29 @@
                 <ul id="link-list"></ul>
             </div>
             <div id="right-content">
-                <button class="btn btn-primary">Sair</button>
+                <button class="btn btn-primary" id="btnSair">Sair</button>
+                <!-- Movendo o menu aqui -->
+                <div id="menu">
+                    <div id="menu-bar" onclick="menuOnClick()">
+                        <div id="bar1" class="bar"></div>
+                        <div id="bar2" class="bar"></div>
+                        <div id="bar3" class="bar"></div>
+                    </div>
+                    <nav class="nav" id="nav">
+                        <ul>
+                            <li><a href="../homePassageira/index.html">Home</a></li>
+                            <li><a href="../PerfilPassageira/index.html"">Perfil</a></li>
+                            <li><a href="../index.html" id="btnSair">Sair</a></li>
+                           
+                        </ul>
+                    </nav> 
+                </div>
+                <!-- Fim do menu -->
             </div>
+            <div class="menu-bg" id="menu-bg"></div>
         </div>
     </header>
+    
     <div id="corrida-details"></div>
     <div id="status-message" class="status-message"></div>
 
@@ -46,6 +65,7 @@
             </div>
         </div>
     </footer>
+    <script src="../js/homeP.js"></script>
     <script src="../sprits/entra-contato-moto.js"></script>
 </body>
 </html>

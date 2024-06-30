@@ -20,24 +20,40 @@
 <body>
     
     <header>
-    
         <div id="header-div" class="ntext-select">
             <div id="left-content">
                 <a id="header-title" href="../homeMotorista/index.html"><b id="girls">GIRLS  </b>drive</a>
                 <ul id="link-list"></ul>
             </div>
             <div id="right-content">
-                <button class="btn btn-primary">Sair</button>
+                <button class="btn btn-primary" id="btnSair">Sair</button>
+                <!-- Movendo o menu aqui -->
+                <div id="menu">
+                    <div id="menu-bar" onclick="menuOnClick()">
+                        <div id="bar1" class="bar"></div>
+                        <div id="bar2" class="bar"></div>
+                        <div id="bar3" class="bar"></div>
+                    </div>
+                    <nav class="nav" id="nav">
+                        <ul>
+                            <li><a href="../homeMotorista/index.html">Home</a></li>
+                            <li><a href="../PerfilMotorista/index.html">Perfil</a></li>
+                            <li><a href="../index.html" id="btnSair">Sair</a></li>
+                           
+                        </ul>
+                    </nav> 
+                </div>
+                <!-- Fim do menu -->
             </div>
+            <div class="menu-bg" id="menu-bg"></div>
         </div>
-
     </header>
    <div id="aceitar">
  
     <div id="corrida-details"></div></div>
    
 
-
+    <script src="../js/homeP.js"></script>
     <script src="../sprits/aceitarcorrida.js"></script>
 </body>
 </html>

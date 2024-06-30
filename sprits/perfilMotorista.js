@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     Hora: ${corrida.hora}<br>
                     Status: ${corrida.status} <br>
                      <button onclick="window.location.href='../avaliar-corrida-moto/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
-                    <button onclick="window.location.href='contato_motorista.html'"class="btncorrida">Entrar em Contato</button>
+                   <button onclick="window.location.href='../entrarcont-versM/index.html?corridaId=${corrida.id}'" class="btncorrida">Entrar em Contato</button>
                 </div>
                  
                     <div style="text-align: center;">
