@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
         event.target.value = cpf;
     });
-    
+  
     // Máscara para telefone
     document.getElementById('telefone').addEventListener('input', function(event) {
         let phone = event.target.value.replace(/\D/g, '');
