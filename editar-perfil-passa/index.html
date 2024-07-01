@@ -16,34 +16,28 @@
 </head>
 <body> 
     <header>
-    <div id="header-div" class="ntext-select">
-        <div id="left-content">
-            <a id="header-title" href="../homePassageira/index.html"><b id="girls">GIRLS  </b>drive</a>
-            <ul id="link-list"></ul>
-        </div>
-        <div id="right-content">
-            <button class="btn btn-primary" id="btnSair">Sair</button>
-            <!-- Movendo o menu aqui -->
-            <div id="menu">
-                <div id="menu-bar" onclick="menuOnClick()">
-                    <div id="bar1" class="bar"></div>
-                    <div id="bar2" class="bar"></div>
-                    <div id="bar3" class="bar"></div>
-                </div>
-                <nav class="nav" id="nav">
-                    <ul>
-                        <li><a href="../homePassageira/index.html">Home</a></li>
-                        <li><a href="../PerfilPassageira/index.html">Perfil</a></li>
-                        <li><a href="../index.html" id="btnSair">Sair</a></li>
-                       
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a id="header-title" href="../homePassageira/index.html"><b id="girls">GIRLS  </b>drive</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../homePassageira/index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../PerfilPassageira/index.html">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html" id="btnSair">Sair</a>
+                        </li>
                     </ul>
-                </nav> 
+                </div>
             </div>
-            <!-- Fim do menu -->
-        </div>
-        <div class="menu-bg" id="menu-bg"></div>
-    </div>
-</header>
+          </nav>
+    </header>
 
     <div class="d-flex justify-content-center">
         <h1 id="atualize">Atualize <br>seus dados</h1>
