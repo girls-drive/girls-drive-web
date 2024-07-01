@@ -143,6 +143,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }).then((result) => {
             contatarWhatsApp(passInfo.telefone);
+            if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = '../PerfilMotorista/index.html';
+            }
         });
     }
 

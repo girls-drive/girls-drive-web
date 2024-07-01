@@ -1,4 +1,3 @@
-// Código da página de perfil da passageira
 document.addEventListener('DOMContentLoaded', function() {
     const ridesListSolicitadas = document.getElementById('ridesListSolicitadas');
     const ridesListAceitas = document.getElementById('ridesListAceitas');
@@ -57,32 +56,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
         corridasAceitas.forEach(corrida => {
             const motorista = usuarios.find(usuario => usuario.id === corrida.motorista_id);
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `
-                <div style="text-align: center;">
-                    <img src="${motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png'}" alt="Foto do Motorista" width="100"><br>
-                    <strong>Motorista:</strong> ${capitalizeFirstLetter(motorista.nome || motorista.NomeCompleto)}
-                </div>
-                <div style="text-align: center;">
-                    <strong>Origem:</strong> ${corrida.origem}<br>
-                    <strong>Destino:</strong> ${corrida.destino}<br>
-                    <strong>Data:</strong> ${corrida.data}<br>
-                    <strong>Hora:</strong> ${corrida.hora}<br>
-                    <strong>Status:</strong> ${corrida.status}<br>
-                    <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
-                    <strong>Cor do Carro:</strong> ${motorista.cor}<br>
-                    <strong>Placa do Carro:</strong> ${motorista.placa}<br>
-                    <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
-                    <button onclick="window.location.href='../entrarcont-versP/index.html?corridaId=${corrida.id}'" class="btncorrida">Entrar em Contato</button>
+            if (motorista) {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
                     <div style="text-align: center;">
-                        <strong>Minha avaliação para da corrida:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
+                        <img src="${motorista.fotoPerfil ? motorista.fotoPerfil : '../img/Rectangle 1582.png'}" alt="Foto do Motorista" width="100"><br>
+                        <strong>Motorista:</strong> ${capitalizeFirstLetter(motorista.nome || motorista.NomeCompleto)}
                     </div>
                     <div style="text-align: center;">
-                        <strong>Nota que recebi do motorista:</strong> ${corrida.avaliacaoPassageiro ? `${corrida.avaliacaoPassageiro.nota} estrelas - ${corrida.avaliacaoPassageiro.comentario}` : 'Nenhuma avaliação ainda'}
+                        <strong>Origem:</strong> ${corrida.origem}<br>
+                        <strong>Destino:</strong> ${corrida.destino}<br>
+                        <strong>Data:</strong> ${corrida.data}<br>
+                        <strong>Hora:</strong> ${corrida.hora}<br>
+                        <strong>Status:</strong> ${corrida.status}<br>
+                        <strong>Telefone do Motorista:</strong> ${motorista.telefone}<br>
+                        <strong>Cor do Carro:</strong> ${motorista.cor}<br>
+                        <strong>Placa do Carro:</strong> ${motorista.placa}<br>
+                        <button onclick="window.location.href='../avaliar-corrida-passa/index.html?corridaId=${corrida.id}'" class="btncorrida">Avaliar Corrida</button>
+                        <button onclick="window.location.href='../entrarcont-versP/index.html?corridaId=${corrida.id}'" class="btncorrida">Entrar em Contato</button>
+                        <div style="text-align: center;">
+                            <strong>Minha avaliação para da corrida:</strong> ${corrida.avaliacao ? `${corrida.avaliacao.nota} estrelas - ${corrida.avaliacao.comentario}` : 'Nenhuma avaliação ainda'}
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>Nota que recebi do motorista:</strong> ${corrida.avaliacaoPassageiro ? `${corrida.avaliacaoPassageiro.nota} estrelas - ${corrida.avaliacaoPassageiro.comentario}` : 'Nenhuma avaliação ainda'}
+                        </div>
                     </div>
-                </div>
-            `;
-            ridesListAceitas.appendChild(listItem);
+                `;
+                ridesListAceitas.appendChild(listItem);
+            }
         });
     }
 

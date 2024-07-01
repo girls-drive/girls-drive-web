@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Máscara para CPF
     document.getElementById('cpf').addEventListener('input', function(event) {
         let cpf = event.target.value.replace(/\D/g, '');
         if (cpf.length > 11) {
@@ -9,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
         event.target.value = cpf;
     });
-  
+
     // Máscara para telefone
     document.getElementById('telefone').addEventListener('input', function(event) {
         let phone = event.target.value.replace(/\D/g, '');
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         phone = phone.replace(/(\d{5})(\d)/, '$1-$2');
         event.target.value = phone;
     });
-    
+
     const form = document.getElementById('cadastroForm');
 
     form.addEventListener('submit', async function(event) {
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Verificar se a idade é maior ou igual a 18 anos
         const dataNascimento = new Date(aniversario);
         const hoje = new Date();
-        const idade = hoje.getFullYear() - dataNascimento.getFullYear();
+        let idade = hoje.getFullYear() - dataNascimento.getFullYear();
         const mes = hoje.getMonth() - dataNascimento.getMonth();
         if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
             idade--;
@@ -74,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (idade < 18) {
             alert('Para se cadastrar, você precisa ter pelo menos 18 anos de idade.');
+            return;
+        }
+        if (idade > 90) {
+            alert('Digite uma idade válida!');
             return;
         }
 
@@ -109,8 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
             localStorage.setItem('loggedInUser', JSON.stringify(novoUsuario));
             alert('Cadastro realizado com sucesso!');
-            window.location.href = '../homeMotorista/index.html';
             form.reset();
+            window.location.href = '../homeMotorista/index.html';
         } catch (e) {
             alert('Erro ao salvar os dados. O limite de armazenamento foi excedido.');
         }

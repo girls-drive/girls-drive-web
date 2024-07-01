@@ -16,43 +16,38 @@ document.addEventListener('DOMContentLoaded', function() {
         return usuarios ? JSON.parse(usuarios) : [];
     }
 
-    // Obtém o motorista logado do Local Storage
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    if (!loggedInUser) {
-        alert('Nenhum usuário logado encontrado.');
-        return;
-    }
-
-    const motorista_id = loggedInUser.id;
-
     // Função para exibir as corridas na tela
-    function displayCorridas(filteredCorridas) {
+    function displayCorridas() {
+        const corridas = loadCorridas();
         const usuarios = loadUsuarios();
         ridesContainer.innerHTML = '';
 
-        filteredCorridas.forEach(corrida => {
-            const passageiro = usuarios.find(user => user.id === corrida.passageiro_id);
-            if (passageiro) {
-                const rideElement = document.createElement('div');
-                rideElement.classList.add('ride');
+        corridas.forEach(corrida => {
+            // Mostra todas as corridas com status "agendada"
+            if (corrida.status === 'agendada') {
+                const passageiro = usuarios.find(user => user.id === corrida.passageiro_id);
+                if (passageiro) {
+                    const rideElement = document.createElement('div');
+                    rideElement.classList.add('ride');
 
-                rideElement.innerHTML = `
-                    <div class="profile">
-                        <img src="${passageiro.fotoPerfil ? passageiro.fotoPerfil : '../img/Rectangle 1582.png'}" alt="Foto de Perfil">
-                        <div class="details">
-                            <p class="nickname">${passageiro.nome || passageiro.NomeCompleto}</p>
+                    rideElement.innerHTML = `
+                        <div class="profile">
+                            <img src="${passageiro.fotoPerfil}" alt="Foto de Perfil">
+                            <div class="details">
+                                <p class="nickname">${passageiro.nome || passageiro.NomeCompleto}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="details">
-                        <p><strong>Origem</strong></p>
-                        <p>${corrida.origem}</p>
-                        <p><strong>Destino</strong></p>
-                        <p>${corrida.destino}</p>
-                    </div>
-                    <button class="select-button" data-id="${corrida.id}">Aceitar corrida</button>
-                `;
+                        <div class="details">
+                            <p><strong>Origem</strong></p>
+                            <p>${corrida.origem}</p>
+                            <p><strong>Destino</strong></p>
+                            <p>${corrida.destino}</p>
+                        </div>
+                        <button class="select-button" data-id="${corrida.id}">Selecionar</button>
+                    `;
 
-                ridesContainer.appendChild(rideElement);
+                    ridesContainer.appendChild(rideElement);
+                }
             }
         });
     }
@@ -73,13 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener para o botão de pesquisa
-    if (searchButton) {
-        searchButton.addEventListener('click', filterCorridas);
-    }
+    searchButton.addEventListener('click', filterCorridas);
 
-    // Carrega as corridas ao carregar a página
-    const corridas = loadCorridas().filter(corrida => corrida.motorista_id === motorista_id || corrida.status === "agendada");
-    displayCorridas(corridas);
+    // Carrega e exibe as corridas ao carregar a página
+    displayCorridas();
 
     // Event listener para os botões "Selecionar"
     ridesContainer.addEventListener('click', function(event) {
@@ -143,15 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Exibe uma mensagem de sucesso
         alert('Pedido de corrida recebido com sucesso!');
 
-        // Log as corridas no console
-        console.log('Corridas cadastradas:', corridas);
+        // Atualiza a exibição das corridas na tela
+        displayCorridas();
     }
 
     // Adiciona um evento de submit ao formulário
     document.getElementById('rideForm').addEventListener('submit', cadastrarCorrida);
-
-    document.getElementById('btnSair').addEventListener('click', function() {
-        localStorage.removeItem('loggedInUser'); // ou qualquer chave específica do usuário
-        window.location.href = '../index.html'; // 
-    });
 });
