@@ -17,37 +17,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Função para exibir as corridas na tela
-    function displayCorridas() {
-        const corridas = loadCorridas();
+    function displayCorridas(filteredCorridas) {
         const usuarios = loadUsuarios();
         ridesContainer.innerHTML = '';
 
-        corridas.forEach(corrida => {
-            // Mostra todas as corridas com status "agendada"
-            if (corrida.status === 'agendada') {
-                const passageiro = usuarios.find(user => user.id === corrida.passageiro_id);
-                if (passageiro) {
-                    const rideElement = document.createElement('div');
-                    rideElement.classList.add('ride');
+        filteredCorridas.forEach(corrida => {
+            const passageiro = usuarios.find(user => user.id === corrida.passageiro_id);
+            if (passageiro) {
+                const rideElement = document.createElement('div');
+                rideElement.classList.add('ride');
 
-                    rideElement.innerHTML = `
-                        <div class="profile">
-                            <img src="${passageiro.fotoPerfil}" alt="Foto de Perfil">
-                            <div class="details">
-                                <p class="nickname">${passageiro.nome || passageiro.NomeCompleto}</p>
-                            </div>
-                        </div>
+                rideElement.innerHTML = `
+                    <div class="profile">
+                        <img src="${passageiro.fotoPerfil}" alt="Foto de Perfil">
                         <div class="details">
-                            <p><strong>Origem</strong></p>
-                            <p>${corrida.origem}</p>
-                            <p><strong>Destino</strong></p>
-                            <p>${corrida.destino}</p>
+                            <p class="nickname">${passageiro.nome || passageiro.NomeCompleto}</p>
                         </div>
-                        <button class="select-button" data-id="${corrida.id}">Selecionar</button>
-                    `;
+                    </div>
+                    <div class="details">
+                        <p><strong>Origem</strong></p>
+                        <p>${corrida.origem}</p>
+                        <p><strong>Destino</strong></p>
+                        <p>${corrida.destino}</p>
+                    </div>
+                    <button class="select-button" data-id="${corrida.id}">Selecionar</button>
+                `;
 
-                    ridesContainer.appendChild(rideElement);
-                }
+                ridesContainer.appendChild(rideElement);
             }
         });
     }
@@ -61,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const filteredCorridas = corridas.filter(corrida => {
             const origemMatch = corrida.origem.toLowerCase().includes(originValue);
             const destinoMatch = corrida.destino.toLowerCase().includes(destinationValue);
-            return origemMatch && destinoMatch;
+            return origemMatch && destinoMatch && corrida.status === 'agendada';
         });
 
         displayCorridas(filteredCorridas);
@@ -70,8 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener para o botão de pesquisa
     searchButton.addEventListener('click', filterCorridas);
 
+    // Event listener para os campos de pesquisa (origem e destino)
+    searchOrigin.addEventListener('input', filterCorridas);
+    searchDestination.addEventListener('input', filterCorridas);
+
     // Carrega e exibe as corridas ao carregar a página
-    displayCorridas();
+    displayCorridas(loadCorridas().filter(corrida => corrida.status === 'agendada'));
 
     // Event listener para os botões "Selecionar"
     ridesContainer.addEventListener('click', function(event) {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Pedido de corrida recebido com sucesso!');
 
         // Atualiza a exibição das corridas na tela
-        displayCorridas();
+        displayCorridas(loadCorridas().filter(corrida => corrida.status === 'agendada'));
     }
 
     // Adiciona um evento de submit ao formulário
