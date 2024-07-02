@@ -7,11 +7,10 @@
     --footer: #1D1D1D;
 }
 
-body, main {
-    background-color: var(--black);
+body {
+    background-color: #f2f2f2;
     font-family: Arial, sans-serif;
 }
-
 .btncorrida{
     background-color: var(--favourite);
     color: var(--white);
@@ -20,12 +19,11 @@ body, main {
     height: 13%;
     border-radius: 5px;
 }
-
 .profile-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 20px;
+    margin: 40px 20px;
     background-color: var(--lightpink);
     padding: 20px;
     border-radius: 10px;
@@ -58,7 +56,7 @@ body, main {
 }
 
 .rides-container {
-    margin: 0 20px;
+    margin: 40px 20px;
     text-align: center;
     background-color: white;
     padding: 20px;
@@ -191,7 +189,11 @@ li div img {
 li div strong {
     display: block;
 }
+@media only screen and (max-width: 768px) {
 
-.nav-item {
-    border: 0;
+}
+@media only screen and (max-width: 425px) {
+#header-title{
+    display: none;
+}
 }
